@@ -1,8 +1,12 @@
 ---
 id: contact
-title: Contact
+title: About Me
 ---
 
-# Contact Corinna
+# About Me
 
 Example text for content page
+
+# Contact Me
+
+email: corinna@ucsb.edu
