@@ -1,12 +1,17 @@
 ---
 id: contact
-title: About Me
+title: Contact
 ---
 
-# About Me
-
-Example text for content page
-
 # Contact Me
+
+Corinna Hong
+<br>
+
+Master's Candidate
+<br>
+
+Bren School of Environmental Science & Management
+<br>
 
 email: corinna@ucsb.edu

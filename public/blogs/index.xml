@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blogs on Corinna&#39;s Data Website</title>
+    <link>/blogs/</link>
+    <description>Recent content in Blogs on Corinna&#39;s Data Website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="/blogs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Land Use/Land Cover and Watershed Maps</title>
+      <link>/blogs/hw2_task3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/blogs/hw2_task3/</guid>
+      <description>testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview
+# Load packages# Generallibrary(tidyverse)library(janitor)library(here)library(paletteer)# Spatiallibrary(sf)library(tmap)# Read in dataland_use &amp;lt;- read_sf(dsn = here(&amp;quot;Land_Use_Land_Cover_LULC&amp;quot;), layer = &amp;quot;Land_Use_Land_Cover_LULC&amp;quot;)watersheds &amp;lt;- read_sf(dsn = here(&amp;quot;Watersheds&amp;quot;), layer = &amp;quot;Watersheds&amp;quot;)# st_crs(watersheds) checking CRS, both are EPSG: 4326# Wrangle data for land coverland_cover_oahu &amp;lt;- land_use %&amp;gt;%dplyr::select(landcover) %&amp;gt;%filter(landcover !</description>
+    </item>
+    
+    <item>
+      <title>Snowshoe Hares</title>
+      <link>/blogs/hw1_task1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/blogs/hw1_task1/</guid>
+      <description>Snowshoe hares are prevalent in northern boreal forests, such as those in Alaska. Capture-release studies conducted from 1999 to 2002 in Alaska’s Bonanza Creek Experimental Forest collected physical data on this species (Kielland et al., 2017). This project visualizes snowshoe hare weights in a box-and-whisker plot with a jitter overlay. It also provides some summary statistics on snowshow hare weights. testing text length in preview testing text length in preview testing text length in previewW FIN</description>
+    </item>
+    
+  </channel>
+</rss>

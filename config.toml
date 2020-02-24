@@ -10,7 +10,7 @@ disqusShortname = ""
 googleAnalytics = ""
 
 # Define the number of posts per page
-paginate = 10
+paginate = 5
 
 [menu]
 
@@ -23,17 +23,11 @@ paginate = 10
     weight = 1
 
 [[menu.main]]
-    identifier = "about me"
-    name = "About me"
-    url  = "/contact/"
-    weight = 2
-
-[[menu.main]]
     identifier="projects"
     name = "projects"
     url  = "/blog/"
-    weight = 3
-    
+    weight = 2
+
 #[[menu.main]]
     #identifier = "faq"
     #name = "FAQ"
@@ -41,11 +35,11 @@ paginate = 10
     #weight = 3
 
 
-#[[menu.main]]
-    #identifier = "contact"
-    #name = "Contact"
-    #url  = "/contact/"
-    #weight = 4
+[[menu.main]]
+    identifier = "contact"
+    name = "Contact"
+    url  = "/contact/"
+    weight = 3
 
 # Top bar social links menu
 
@@ -69,7 +63,7 @@ paginate = 10
 
 [params]
     viewMorePostLink = "/blog/"
-    author = "DevCows"
+    author = "Corinna Hong"
     defaultKeywords = ["devows", "hugo", "go"]
     mainSections = ["blog"]
     defaultDescription = "Site template made by devcows using hugo"
@@ -105,10 +99,10 @@ paginate = 10
     copyright = "Copyright (c) 2020, Corinna Hong; all rights reserved."
 
     # Format dates with Go's time formatting
-    date_format = "January 2, 2006"
+    date_format = "January 2, 2006" # IDK why it cant figure out dates
 
-    logo = ""
-    logo_small = ""
+    logo = "img/apple-touch-icon.png"
+    logo_small = "apple-touch-icon.png"
     #address = """<p class="text-uppercase"><strong>Universal Ltd.</strong>
         #<br>13/25 New Avenue
         #<br>Newtown upon River
@@ -122,7 +116,7 @@ paginate = 10
     #longitude = "-77.028333"
 
 [Permalinks]
-    blog = "/blog/:year/:month/:day/:filename/"
+    blog = "/blog/:day/:month/:year/:filename/"
 
 # Enable or disable top bar with social icons
 [params.topbar]
@@ -162,10 +156,10 @@ paginate = 10
 [params.see_more]
     enable = false
     icon = "far fa-smile"
-    title = "About Me"
-    subtitle = "blah blah bbah blah"
-    link_url = "http://127.0.0.1:4321/blog/"
-    link_text = "See my projects"
+    title = "See More"
+    subtitle = ""
+    link_url = ""
+    link_text = ""
 
 [params.clients]
     enable = false
@@ -177,5 +171,5 @@ paginate = 10
 
 [params.recent_posts]
     enable = true
-    title = "Current Projects"
+    title = "Recent Projects"
     subtitle = ""

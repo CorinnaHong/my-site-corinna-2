@@ -3,6 +3,7 @@ title: "Snowshoe Hares"
 author: "Corinna Hong"
 date: "January 29, 2020"
 output: html_document
+banner: "img/banners/snowshoe_hares_nps.jpg"
 ---
 
 ```{r setup, include=FALSE}
@@ -13,13 +14,7 @@ knitr::opts_chunk$set(echo = TRUE,
 
 <br>
 
-Snowshoe hares are prevalent in northern boreal forests, such as those in Alaska. Capture-release studies conducted from 1999 to 2002 in Alaska's Bonanza Creek Experimental Forest collected physical data on this species (Kielland et al., 2017). This project visualizes snowshoe hare weights in a box-and-whisker plot with a jitter overlay. It also provides some summary statistics on snowshow hare weights.
-
-<center>
-
-![White snowshoe hare in the winter. <br> Snowshoe Hare (U.S. National Park Service). (n.d.). Retrieved from https://www.nps.gov/articles/snowshoe-hare.htm](snowshoe_hares_nps.jpg)
-
-</center>
+Snowshoe hares are prevalent in northern boreal forests, such as those in Alaska. Capture-release studies conducted from 1999 to 2002 in Alaska's Bonanza Creek Experimental Forest collected physical data on this species (Kielland et al., 2017). This project visualizes snowshoe hare weights in a box-and-whisker plot with a jitter overlay. It also provides some summary statistics on snowshow hare weights. testing text length in preview testing text length in preview testing text length in previewW FIN
 
 
 <style>

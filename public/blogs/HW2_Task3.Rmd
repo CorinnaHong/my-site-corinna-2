@@ -1,0 +1,112 @@
+---
+title: "Land Use/Land Cover and Watershed Maps"
+author: "Corinna Hong"
+date: "February 18, 2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE,
+                      warning = FALSE)
+```
+
+testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview
+
+
+
+```{r}
+
+# Load packages
+
+# General
+library(tidyverse)
+library(janitor)
+library(here)
+library(paletteer)
+
+# Spatial
+library(sf)
+library(tmap)
+
+```
+
+```{r}
+
+# Read in data
+
+land_use <- read_sf(dsn = here("Land_Use_Land_Cover_LULC"), layer = "Land_Use_Land_Cover_LULC")
+
+watersheds <- read_sf(dsn = here("Watersheds"), layer = "Watersheds")
+
+# st_crs(watersheds) checking CRS, both are EPSG: 4326
+
+```
+
+```{r}
+
+# Wrangle data for land cover
+
+land_cover_oahu <- land_use %>%
+  dplyr::select(landcover) %>%
+  filter(landcover != 0) %>%  # Remove land use category of 0
+  st_crop(xmin = -158.31, xmax = -157.62, ymin = 21.26, ymax = 21.75) # Crop to Oahu
+  
+```
+
+```{r, fig.align = 'center', out.width = '100%'}
+
+# Create map for land use
+
+oahu_map <- tm_basemap("Esri.WorldTopoMap") + # Add basemap
+  tm_shape(land_cover_oahu) + # Add land cover
+  tm_fill("landcover", title = "Land Cover", alpha = 0.6) # layer elements
+
+tmap_mode("view")
+
+oahu_map
+
+
+```
+<p style="font-size:0.9em; font-style:italic; color: grey">
+**Figure 1. Land Use Land Cover Types on Oahu.** Historical land use and land cover classification data as of 1976. Data accessed at: http://geoportal.hawaii.gov/datasets/land-use-land-cover-lulc?geometry=-165.822%2C18.755%2C-149.134%2C22.354
+</p>
+
+
+```{r}
+
+# Wrangle data for watersheds
+
+watersheds_oahu <- watersheds %>% 
+  dplyr::select(wuname) %>% 
+  st_crop(xmin = -158.31, xmax = -157.62, ymin = 21.26, ymax = 21.75) # Crop to Oahu
+
+```
+
+```{r,  fig.align = 'center', out.width = '100%'}
+
+# Create map of watersheds
+
+
+oahu_watersheds <- tm_basemap("Esri.WorldTopoMap") +
+  tm_shape(watersheds_oahu) +
+  tm_fill("wuname", title = "Watershed", alpha = 0.5)
+
+
+tmap_mode("view")
+
+oahu_watersheds
+
+```
+<p style="font-size:0.9em; font-style:italic; color: grey">
+**Figure 2. Oahu's Watersheds.** Watersheds of Oahu layered over ESRI World Topomap. Data accessed at: http://geoportal.hawaii.gov/datasets/watersheds?geometry=-165.822%2C18.755%2C-149.134%2C22.354
+</p>
+
+</br>
+</br>
+**References**
+</br>
+Hawaii Statewide GIS Program. (2017). Land Use Land Cover (LULC). Available from http://geoportal.hawaii.gov/datasets/land-use-land-cover-lulc
+
+</br>
+Hawaii Statewide GIS Program. (2017). Surface Water Hydrologic Unit Boundaries (Watersheds). Available from : http://geoportal.hawaii.gov/datasets/watersheds

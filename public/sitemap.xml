@@ -3,15 +3,15 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/contact/</loc>
-  </url>
-  
-  <url>
     <loc>/blog/</loc>
   </url>
   
   <url>
     <loc>/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>/contact/</loc>
   </url>
   
   <url>
@@ -23,7 +23,11 @@
   </url>
   
   <url>
-    <loc>/blog/1/01/01/hw1_task1/</loc>
+    <loc>/blog/01/01/1/hw2_task3/</loc>
+  </url>
+  
+  <url>
+    <loc>/blog/01/01/1/hw1_task1/</loc>
   </url>
   
   <url>

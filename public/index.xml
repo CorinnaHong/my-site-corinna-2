@@ -11,13 +11,12 @@
     
     
     <item>
-      <title>About Me</title>
+      <title>Contact</title>
       <link>/contact/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/contact/</guid>
-      <description>About Me Example text for content page
-Contact Me email: corinna@ucsb.edu</description>
+      <description>Contact Me Corinna Hong Master&#39;s Candidate Bren School of Environmental Science &amp;amp; Management email: corinna@ucsb.edu</description>
     </item>
     
     <item>
@@ -31,12 +30,21 @@ Contact Me email: corinna@ucsb.edu</description>
     </item>
     
     <item>
-      <title>Snowshoe Hares</title>
-      <link>/blog/1/01/01/hw1_task1/</link>
+      <title>Land Use/Land Cover and Watershed Maps</title>
+      <link>/blog/01/01/1/hw2_task3/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/blog/1/01/01/hw1_task1/</guid>
-      <description>Snowshoe hares are prevalent in northern boreal forests, such as those in Alaska. Capture-release studies conducted from 1999 to 2002 in Alaska’s Bonanza Creek Experimental Forest collected physical data on this species (Kielland et al., 2017). This project visualizes snowshoe hare weights in a box-and-whisker plot with a jitter overlay. It also provides some summary statistics on snowshow hare weights. testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview 3</description>
+      <guid>/blog/01/01/1/hw2_task3/</guid>
+      <description>testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview FIN</description>
+    </item>
+    
+    <item>
+      <title>Snowshoe Hares</title>
+      <link>/blog/01/01/1/hw1_task1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/01/01/1/hw1_task1/</guid>
+      <description>Snowshoe hares are prevalent in northern boreal forests, such as those in Alaska. Capture-release studies conducted from 1999 to 2002 in Alaska’s Bonanza Creek Experimental Forest collected physical data on this species (Kielland et al., 2017). This project visualizes snowshoe hare weights in a box-and-whisker plot with a jitter overlay. It also provides some summary statistics on snowshow hare weights. Testing text length in preview testing text length in preview FIN</description>
     </item>
     
   </channel>
