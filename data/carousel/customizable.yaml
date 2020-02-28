@@ -1,8 +1,9 @@
 weight: 3
-title: "San Francisco Grown"
+title: "About Me"
 description: >
   <ul class="list-style-none">
-    <li>subtext</li>
-    <li>subtext</li>
+    <li>Master's Candidate | Class of 2020</li>
+    <li>Costal Marine Resources Management</li>
+    <li>Environmental Communication & Media</li>
   </ul>
-image: "img/carousel/sf.png"
+image: "img/carousel/sb.jpg"

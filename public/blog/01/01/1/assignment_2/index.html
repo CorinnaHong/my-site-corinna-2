@@ -7,7 +7,7 @@
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <title>Snowshoe Hares</title>
+  <title>Changes in Crop Yield</title>
   <meta name="author" content="Corinna Hong" />
   
   
@@ -66,17 +66,17 @@
   
   <meta property="og:locale" content="en_us">
   <meta property="og:site_name" content="Corinna&#39;s Data Website">
-  <meta property="og:title" content="Snowshoe Hares">
+  <meta property="og:title" content="Changes in Crop Yield">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="/blog/01/01/1/hw1_task1/" />
+  <meta property="og:url" content="/blog/01/01/1/assignment_2/" />
   <meta property="og:description" content="Site template made by devcows using hugo">
-  <meta property="og:image" content="/img/banners/snowshoe_hares_nps.jpg">
-  <meta property="og:image:type" content="image/jpg">
+  <meta property="og:image" content="/img/sharing-default.png">
+  <meta property="og:image:type" content="image/png">
   
   
   
-    <meta property="og:image:width" content="638">
-    <meta property="og:image:height" content="424">
+    <meta property="og:image:width" content="800">
+    <meta property="og:image:height" content="420">
   
   
   
@@ -91,11 +91,11 @@
   
 
   
-  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:card" content="summary">
   
-  <meta name="twitter:title" content="Snowshoe Hares">
+  <meta name="twitter:title" content="Changes in Crop Yield">
   
-  <meta name="twitter:image" content="/img/banners/snowshoe_hares_nps.jpg">
+  <meta name="twitter:image" content="/img/sharing-default.png">
   
   <meta name="twitter:description" content="Site template made by devcows using hugo">
   
@@ -116,9 +116,9 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="/img/apple-touch-icon.png" alt="Snowshoe Hares logo" class="hidden-xs hidden-sm">
-                    <img src="/apple-touch-icon.png" alt="Snowshoe Hares logo" class="visible-xs visible-sm">
-                    <span class="sr-only">Snowshoe Hares - go to homepage</span>
+                    <img src="/img/apple-touch-icon.png" alt="Changes in Crop Yield logo" class="hidden-xs hidden-sm">
+                    <img src="/apple-touch-icon.png" alt="Changes in Crop Yield logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Changes in Crop Yield - go to homepage</span>
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
@@ -189,7 +189,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Snowshoe Hares</h1>
+                <h1>Changes in Crop Yield</h1>
             </div>
         </div>
     </div>
@@ -215,137 +215,80 @@
 
                         <div id="post-content">
                           
-<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
 
 
-<p><br></p>
-<p>Snowshoe hares are prevalent in northern boreal forests, such as those in Alaska. Capture-release studies conducted from 1999 to 2002 in Alaska’s Bonanza Creek Experimental Forest collected physical data on this species (Kielland et al., 2017). This project visualizes snowshoe hare weights in a box-and-whisker plot with a jitter overlay. It also provides some summary statistics on snowshow hare weights. This project showcases my data visualization work with figures and tables.</p>
-<style>
-p.caption {
-  font-size: 0.9em;
-  font-style: italic;
-  color: grey;
-  margin-right: 10%;
-  margin-left: 15%;  
-  text-align: left;
-}
-</style>
-<pre class="r"><code># Load packages
+<pre class="r"><code>library(tidyverse)
+library(gganimate)</code></pre>
+<pre class="r"><code>fertilizer &lt;- read_csv(&quot;fertilizer.csv&quot;)
+grain &lt;- read_csv(&quot;grain.csv&quot;)</code></pre>
+<div id="patterns-in-yield-over-time" class="section level3">
+<h3>1.Patterns in Yield over Time</h3>
+<ol style="list-style-type: lower-alpha">
+<li></li>
+</ol>
+<pre class="r"><code>yield_animate &lt;- ggplot(grain, aes(x = year, y = yield)) +
+  geom_line(aes(color = commodity)) +
+  facet_wrap(~commodity, scale = &quot;free&quot;) +
+  guides(color = FALSE) +
+  labs(x = &quot;\nYear&quot;, y = &quot;Yield (bushels / acre)\n&quot;, title = &quot;U.S. Production of Four Crops (1866 - 2018)\n&quot;) +
+  theme_classic() +
+  transition_reveal(commodity, year)
 
-library(tidyverse)
-library(kableExtra)
-library(janitor)</code></pre>
-<pre class="r"><code># Read in data
+yield_animate</code></pre>
+<p><img src="/blog/Assignment_2_files/figure-html/patterns%20in%20yield%20over%20time-1.gif" width="70%" style="display: block; margin: auto;" /></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>The trend in barley is best described by a linear, low plateau (LLP) model. The overall hockeystick shape of the trend is a plateau until about 1945, then it begins to increase linearly into the 2000s. Corn can also be described by a LLP model. Like barley, the trend for corn is a plateau until about 1945, then it begins to increase linearly into the 2000s. Oats can also be described by a LLP model even though the plateau isn’t as pronounced as seen in barley and corn. Once again, the trend is a plateau until about 1945, then a linear increase into the 2000s. Sorghum looks like a combination of LLP and linear, upper plateau. There is a plateau from 1925 to around 1945. After that, sorghum experiences a linear increase until around 1980 where it plateaus again.</li>
+</ol>
+</div>
+<div id="fertilizer-use" class="section level3">
+<h3>2. Fertilizer Use</h3>
+<ol style="list-style-type: lower-alpha">
+<li></li>
+</ol>
+<pre class="r"><code>fertilizer_wrangle &lt;- fertilizer %&gt;% 
+  filter(ppa != &quot;NA&quot;)</code></pre>
+<pre class="r"><code>fertilizer_graph &lt;- ggplot(fertilizer_wrangle, aes(x = year, y = ppa))+
+  geom_line(aes (color = fertilizer)) +
+  facet_grid(crop ~ ., scale = &quot;free&quot;) +
+  labs(x = &quot;\nYear&quot;, y = &quot;Fertilizer Use (pounds / acre)\n&quot;, title = &quot;U.S. Fertilizer Use for Three Classes of Fertilizers (1964-2016)\n&quot;) +
+  guides(color = guide_legend(title = &quot;Fertilizer&quot;)) +
+  theme(plot.title = element_text(hjust = 0.5)) + # center title
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 0.5)) # rotate x-axis and move labels down
 
-snowshoe_hares &lt;- read_csv(&quot;showshoe_lter.csv&quot;)
-unique(snowshoe_hares$sex) # check unique values of `sex` column in original data</code></pre>
-<pre class="r"><code># Wrangle data
+fertilizer_graph</code></pre>
+<p><img src="/blog/Assignment_2_files/figure-html/fertilizer%20use%20over%20time-1.png" width="672" style="display: block; margin: auto;" /></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><p>Nitrogen fertilizer use is highest in corn and wheat. This indicates that corn and wheat are nitrogen limited. Soybeans, on the other hand, are low in nitrogen fertilizer use indicaing that they are not nitrogen limited. Instead, soybeans have the highest potassium use meaning that it is most likely potassium limited. In corn and wheat potassium use is in the middle. Corn and wheat have the lowest phosphate use and phosphate use is soybeans is in the middle.</p></li>
+<li><p>Soybeans are high in potassium fertilizer use, medium in phosphate use, and low in nitrogen use. The low application of nitrogen fertilizer makes sense because soybeans are able to fix atmospheric nitrogen through symbiotic bacteria living in their roots (Hardarzon, 1984). However, minimal application of nitrogen is used to ensure maximum crop yield (Hardarzon, 1984). Soybean yeild can also be increased through the addition of potassium (Pettigrew, 2008). This explains why potassiums fertilizer is used heavily on soybeans. Finally, phosphate is added to ensure nitrate uptake by the plant (Rufty et al.,1993).</p></li>
+</ol>
+</div>
+<div id="case-study-corn-yield-and-fertilizer-use" class="section level3">
+<h3>3. Case Study: Corn Yield and Fertilizer Use</h3>
+<ol style="list-style-type: lower-alpha">
+<li></li>
+</ol>
+<pre class="r"><code>grain_rename &lt;- grain %&gt;%
+  rename(crop = commodity)
 
-hares_wrangle &lt;- snowshoe_hares %&gt;% 
-  filter(!is.na(sex)) %&gt;% # remove NAs in sex column
-  mutate(sex = str_to_upper(sex)) %&gt;% # Make everything in sex column uppercase
-  filter(sex %in% c(&quot;M&quot;, &quot;F&quot;))  %&gt;% # look for anything in sex column matching &quot;M&quot;/&quot;F&quot; This is how I am getting rid of &quot;?&quot; and &quot;PF&quot;
-  filter(!is.na(weight)) # remove NAs in weight column
+grain_fertilizer &lt;- full_join(grain_rename, fertilizer, by = c(&quot;crop&quot;, &quot;year&quot;)) # Joined two data frames, r chose to combine by &quot;year&quot; column since they are exactly the same in both data frames. Same capitalization, spacing, spelling, etc.
 
-unique(hares_wrangle$sex) # check unique values of &#39;sex&#39; column in wrangled data</code></pre>
-<pre class="r"><code># Create graph
-
-hare_boxplot &lt;- ggplot(hares_wrangle, aes(x = sex, y = weight)) +
-  geom_boxplot() +
-  geom_jitter(width = 0.1, alpha = 0.3, aes(color = sex)) + # Width of jitter, opacity of dots, color coding by sex
-  labs (x = &quot;Sex&quot;, y = &quot;Body weight (g)&quot;, color = &quot;Sex&quot;) +
+corn_fertilizer &lt;- grain_fertilizer %&gt;% 
+  filter(crop == &quot;Corn&quot;) %&gt;% 
+  filter(ppa != &quot;NA&quot;)</code></pre>
+<pre class="r"><code>corn_graph &lt;- ggplot(corn_fertilizer, aes(x = ppa, y = yield)) +
+  geom_point(aes(color = year)) +
+  facet_wrap(~fertilizer, scale = &quot;free&quot;) +
+  labs(x = &quot;\nFertilizer Use (pounds / acre)&quot;, y = &quot;Yield (bushels / acre)\n&quot;, title = &quot;U.S. Corn Yield from Three Different Classes of Fertilizers (1964-2016)\n&quot;) +
+  labs(color = &quot;Year&quot;) +
   theme_classic()
 
-hare_boxplot</code></pre>
-<div class="figure" style="text-align: center">
-<img src="/blog/HW1_Task1_files/figure-html/plot%20data-1.png" alt="**Figure 1. Female and male snowshoe hare weights** Box-and-whisker plot with overlying jitter showing snowshoe hare body weight (g) for female (F) and male (M) hares at Bonanza Creek Experimental Forest from 1999 to 2002. Data accessed at: https://portal.lternet.edu/nis/mapbrowse?packageid=knb-lter-bnz.55.22" width="672" />
-<p class="caption">
-(#fig:plot data)<strong>Figure 1. Female and male snowshoe hare weights</strong> Box-and-whisker plot with overlying jitter showing snowshoe hare body weight (g) for female (F) and male (M) hares at Bonanza Creek Experimental Forest from 1999 to 2002. Data accessed at: <a href="https://portal.lternet.edu/nis/mapbrowse?packageid=knb-lter-bnz.55.22" class="uri">https://portal.lternet.edu/nis/mapbrowse?packageid=knb-lter-bnz.55.22</a>
-</p>
+corn_graph</code></pre>
+<p><img src="/blog/Assignment_2_files/figure-html/corn%20case%20study%20graph-1.png" width="672" style="display: block; margin: auto;" /></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>For nitrogen fertilizer, it looks like there is a positive linear relationship between fertilizer use and corn yield. However, in phosphate and potassium, this is not the case. For phosphate, it looks like 60 pounds / acre produces the largest corn yield. For potassium, it looks like 80 pounds / acre produces the larger corn yield.</li>
+</ol>
 </div>
-<p>The distrubiton of female and male snowshoe hare weights look pretty similar to each other. Median snowshow hare weight (g) between female and male hares is shown by the center line in the box. The boxes are bounded by the 25th and 75th percentile and the whiskers extend to the last weight observation within one step. These elements of the plot look pretty close between female and male snowshoe hares, with female snowshoe hares having a slightly wider range in body weights.</p>
-<pre class="r"><code># Create summary statistics
-
-hares_summary &lt;- hares_wrangle %&gt;% 
-  group_by(sex) %&gt;% 
-  summarize(
-    mean = round(mean(weight), 2),
-    sd = round(sd(weight), 2),
-    median = round(median(weight), 2),
-    n = length(sex)
-  )</code></pre>
-<pre class="r"><code># Create final table
-
-hares_table &lt;- kable(hares_summary, 
-                     align = rep(&#39;c&#39;, 5), 
-                     caption = &quot;**Table 1. Summary table of snowshoe hare weights.** Mean, standard deviation, and median weight (g) of snowshoe hares at Bonanza Creek Experimental Forest grouped by sex. Data was collected from 1999 to 2002. Data accessed at: https://portal.lternet.edu/nis/mapbrowse?packageid=knb-lter-bnz.55.22&quot;, 
-                     col.names = c(&quot;Sex&quot;,&quot;Mean Weight (g)&quot;,&quot;Standard Deviation (g)&quot;,&quot;Median Weight (g)&quot;, &quot;Sample Size&quot;)
-                     ) %&gt;% # rename columns
-  kable_styling(full_width = F, position = &quot;center&quot;, bootstrap_options = c(&quot;hover&quot;)) # Decrease table width and centers it
-
-hares_table</code></pre>
-<table class="table table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<caption>
-(#tab:finalize table)<strong>Table 1. Summary table of snowshoe hare weights.</strong> Mean, standard deviation, and median weight (g) of snowshoe hares at Bonanza Creek Experimental Forest grouped by sex. Data was collected from 1999 to 2002. Data accessed at: <a href="https://portal.lternet.edu/nis/mapbrowse?packageid=knb-lter-bnz.55.22" class="uri">https://portal.lternet.edu/nis/mapbrowse?packageid=knb-lter-bnz.55.22</a>
-</caption>
-<thead>
-<tr>
-<th style="text-align:center;">
-Sex
-</th>
-<th style="text-align:center;">
-Mean Weight (g)
-</th>
-<th style="text-align:center;">
-Standard Deviation (g)
-</th>
-<th style="text-align:center;">
-Median Weight (g)
-</th>
-<th style="text-align:center;">
-Sample Size
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center;">
-F
-</td>
-<td style="text-align:center;">
-1365.16
-</td>
-<td style="text-align:center;">
-347.45
-</td>
-<td style="text-align:center;">
-1420
-</td>
-<td style="text-align:center;">
-1511
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-M
-</td>
-<td style="text-align:center;">
-1349.94
-</td>
-<td style="text-align:center;">
-305.73
-</td>
-<td style="text-align:center;">
-1390
-</td>
-<td style="text-align:center;">
-1117
-</td>
-</tr>
-</tbody>
-</table>
-<p>These exploratory summary statistics indicate that the mean weight (g) of female snowshoe hares is greater than that of males. This trend is also reflected in the median weight for female and male hares. After visualizing this data with a box-and-whisker plot, these summary statistics are not suprising.</p>
-<p><br> <strong>References:</strong> <br> Kielland, K., Chapin, F. S., and Ruess, R. W. (2017). Snowshoe hare physical data in Bonanza Creek Experimental Forest: 1999-Present. [Data set]. Envrionmental Data Initiative. <a href="https://doi.org/10.6073/pasta/03dce4856d79b91557d8e6ce2cbcdc14" class="uri">https://doi.org/10.6073/pasta/03dce4856d79b91557d8e6ce2cbcdc14</a>.</p>
 
                         </div>
                         

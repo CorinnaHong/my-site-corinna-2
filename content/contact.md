@@ -14,4 +14,4 @@ Master's Candidate
 Bren School of Environmental Science & Management
 <br>
 
-email: corinna@ucsb.edu
+email: corinna@bren.ucsb.edu

@@ -1,0 +1,81 @@
+---
+title: "Changes in Crop Yield"
+author: "Corinna Hong"
+date: "March 9, 2019"
+output: html_document
+---
+
+
+
+<pre class="r"><code>library(tidyverse)
+library(gganimate)</code></pre>
+<pre class="r"><code>fertilizer &lt;- read_csv(&quot;fertilizer.csv&quot;)
+grain &lt;- read_csv(&quot;grain.csv&quot;)</code></pre>
+<div id="patterns-in-yield-over-time" class="section level3">
+<h3>1.Patterns in Yield over Time</h3>
+<ol style="list-style-type: lower-alpha">
+<li></li>
+</ol>
+<pre class="r"><code>yield_animate &lt;- ggplot(grain, aes(x = year, y = yield)) +
+  geom_line(aes(color = commodity)) +
+  facet_wrap(~commodity, scale = &quot;free&quot;) +
+  guides(color = FALSE) +
+  labs(x = &quot;\nYear&quot;, y = &quot;Yield (bushels / acre)\n&quot;, title = &quot;U.S. Production of Four Crops (1866 - 2018)\n&quot;) +
+  theme_classic() +
+  transition_reveal(commodity, year)
+
+yield_animate</code></pre>
+<p><img src="/blog/Assignment_2_files/figure-html/patterns%20in%20yield%20over%20time-1.gif" width="70%" style="display: block; margin: auto;" /></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>The trend in barley is best described by a linear, low plateau (LLP) model. The overall hockeystick shape of the trend is a plateau until about 1945, then it begins to increase linearly into the 2000s. Corn can also be described by a LLP model. Like barley, the trend for corn is a plateau until about 1945, then it begins to increase linearly into the 2000s. Oats can also be described by a LLP model even though the plateau isn’t as pronounced as seen in barley and corn. Once again, the trend is a plateau until about 1945, then a linear increase into the 2000s. Sorghum looks like a combination of LLP and linear, upper plateau. There is a plateau from 1925 to around 1945. After that, sorghum experiences a linear increase until around 1980 where it plateaus again.</li>
+</ol>
+</div>
+<div id="fertilizer-use" class="section level3">
+<h3>2. Fertilizer Use</h3>
+<ol style="list-style-type: lower-alpha">
+<li></li>
+</ol>
+<pre class="r"><code>fertilizer_wrangle &lt;- fertilizer %&gt;% 
+  filter(ppa != &quot;NA&quot;)</code></pre>
+<pre class="r"><code>fertilizer_graph &lt;- ggplot(fertilizer_wrangle, aes(x = year, y = ppa))+
+  geom_line(aes (color = fertilizer)) +
+  facet_grid(crop ~ ., scale = &quot;free&quot;) +
+  labs(x = &quot;\nYear&quot;, y = &quot;Fertilizer Use (pounds / acre)\n&quot;, title = &quot;U.S. Fertilizer Use for Three Classes of Fertilizers (1964-2016)\n&quot;) +
+  guides(color = guide_legend(title = &quot;Fertilizer&quot;)) +
+  theme(plot.title = element_text(hjust = 0.5)) + # center title
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 0.5)) # rotate x-axis and move labels down
+
+fertilizer_graph</code></pre>
+<p><img src="/blog/Assignment_2_files/figure-html/fertilizer%20use%20over%20time-1.png" width="672" style="display: block; margin: auto;" /></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><p>Nitrogen fertilizer use is highest in corn and wheat. This indicates that corn and wheat are nitrogen limited. Soybeans, on the other hand, are low in nitrogen fertilizer use indicaing that they are not nitrogen limited. Instead, soybeans have the highest potassium use meaning that it is most likely potassium limited. In corn and wheat potassium use is in the middle. Corn and wheat have the lowest phosphate use and phosphate use is soybeans is in the middle.</p></li>
+<li><p>Soybeans are high in potassium fertilizer use, medium in phosphate use, and low in nitrogen use. The low application of nitrogen fertilizer makes sense because soybeans are able to fix atmospheric nitrogen through symbiotic bacteria living in their roots (Hardarzon, 1984). However, minimal application of nitrogen is used to ensure maximum crop yield (Hardarzon, 1984). Soybean yeild can also be increased through the addition of potassium (Pettigrew, 2008). This explains why potassiums fertilizer is used heavily on soybeans. Finally, phosphate is added to ensure nitrate uptake by the plant (Rufty et al.,1993).</p></li>
+</ol>
+</div>
+<div id="case-study-corn-yield-and-fertilizer-use" class="section level3">
+<h3>3. Case Study: Corn Yield and Fertilizer Use</h3>
+<ol style="list-style-type: lower-alpha">
+<li></li>
+</ol>
+<pre class="r"><code>grain_rename &lt;- grain %&gt;%
+  rename(crop = commodity)
+
+grain_fertilizer &lt;- full_join(grain_rename, fertilizer, by = c(&quot;crop&quot;, &quot;year&quot;)) # Joined two data frames, r chose to combine by &quot;year&quot; column since they are exactly the same in both data frames. Same capitalization, spacing, spelling, etc.
+
+corn_fertilizer &lt;- grain_fertilizer %&gt;% 
+  filter(crop == &quot;Corn&quot;) %&gt;% 
+  filter(ppa != &quot;NA&quot;)</code></pre>
+<pre class="r"><code>corn_graph &lt;- ggplot(corn_fertilizer, aes(x = ppa, y = yield)) +
+  geom_point(aes(color = year)) +
+  facet_wrap(~fertilizer, scale = &quot;free&quot;) +
+  labs(x = &quot;\nFertilizer Use (pounds / acre)&quot;, y = &quot;Yield (bushels / acre)\n&quot;, title = &quot;U.S. Corn Yield from Three Different Classes of Fertilizers (1964-2016)\n&quot;) +
+  labs(color = &quot;Year&quot;) +
+  theme_classic()
+
+corn_graph</code></pre>
+<p><img src="/blog/Assignment_2_files/figure-html/corn%20case%20study%20graph-1.png" width="672" style="display: block; margin: auto;" /></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>For nitrogen fertilizer, it looks like there is a positive linear relationship between fertilizer use and corn yield. However, in phosphate and potassium, this is not the case. For phosphate, it looks like 60 pounds / acre produces the largest corn yield. For potassium, it looks like 80 pounds / acre produces the larger corn yield.</li>
+</ol>
+</div>
