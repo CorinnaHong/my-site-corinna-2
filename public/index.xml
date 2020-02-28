@@ -16,7 +16,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/blog/01/01/1/assignment_2/</guid>
-      <description>library(tidyverse)library(gganimate)fertilizer &amp;lt;- read_csv(&amp;quot;fertilizer.csv&amp;quot;)grain &amp;lt;- read_csv(&amp;quot;grain.csv&amp;quot;)1.Patterns in Yield over Timeyield_animate &amp;lt;- ggplot(grain, aes(x = year, y = yield)) +geom_line(aes(color = commodity)) +facet_wrap(~commodity, scale = &amp;quot;free&amp;quot;) +guides(color = FALSE) +labs(x = &amp;quot;\nYear&amp;quot;, y = &amp;quot;Yield (bushels / acre)\n&amp;quot;, title = &amp;quot;U.S. Production of Four Crops (1866 - 2018)\n&amp;quot;) +theme_classic() +transition_reveal(commodity, year)yield_animateThe trend in barley is best described by a linear, low plateau (LLP) model.</description>
+      <description>p.caption {font-size: 0.9em;font-style: italic;color: grey;margin-right: 10%;margin-left: 14%; text-align: left;}# Load Packageslibrary(tidyverse)library(gganimate)# Read in datafertilizer &amp;lt;- read_csv(&amp;quot;fertilizer.csv&amp;quot;)grain &amp;lt;- read_csv(&amp;quot;grain.csv&amp;quot;)# Explore patterns in yield over timeyield_animate &amp;lt;- ggplot(grain, aes(x = year, y = yield)) +geom_line(aes(color = commodity)) +facet_wrap(~commodity, scale = &amp;quot;free&amp;quot;) +guides(color = FALSE) +labs(x = &amp;quot;\nYear&amp;quot;, y = &amp;quot;Yield (bushels / acre)\n&amp;quot;) +theme_classic() +transition_reveal(commodity, year) # animate the plotyield_animateFigure 1: Trends in Crop Yield.</description>
     </item>
     
     <item>
@@ -48,12 +48,31 @@
     </item>
     
     <item>
+      <title>Legume Nutrients</title>
+      <link>/blog/01/01/1/hw1_task2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/01/01/1/hw1_task2/</guid>
+      <description>The U.S. Department of Agriculture’s FoodData Central analyzes and compiles nutrient and food component data for a wide variety of foods and beverages (U.S. Department of Agriculture, 2019). The dataset used for this project contains nutrient information for raw fruits and vegetables. This project will use the ordination method of principle component analysis to explore similarities and differences in legume and legume product nutrients.
+p.caption {font-size: 0.</description>
+    </item>
+    
+    <item>
+      <title>Salmon Counts at Bonneville Dam</title>
+      <link>/blog/01/01/1/hw2_task2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/01/01/1/hw2_task2/</guid>
+      <description>Bonneville Lock and Dam’s first powerhouse was completed in 1938 on the Columbia River in Oregon to provide hydropower to the Pacific Northwest (U.S. Army Corps of Engineers, n.d.). This project visualizes changes in steelhead salmon passage counts across Bonneville Dam from 1940 - 2019. It first looks at changes in daily counts, then changes in monthly and yearly counts over the same time period. This project showcases time series data work.</description>
+    </item>
+    
+    <item>
       <title>Snowshoe Hares</title>
       <link>/blog/01/01/1/hw1_task1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/blog/01/01/1/hw1_task1/</guid>
-      <description>Snowshoe hares are prevalent in northern boreal forests, such as those in Alaska. Capture-release studies conducted from 1999 to 2002 in Alaska’s Bonanza Creek Experimental Forest collected physical data on this species (Kielland et al., 2017). This project visualizes snowshoe hare weights in a box-and-whisker plot with a jitter overlay. It also provides some summary statistics on snowshow hare weights. This project showcases my data visualization work with figures and tables.</description>
+      <description>Snowshoe hares are prevalent in northern boreal forests, such as those in Alaska. Capture-release studies conducted from 1999 to 2002 in Alaska’s Bonanza Creek Experimental Forest collected physical data on this species (Kielland et al., 2017). This project visualizes snowshoe hare weights in a box-and-whisker plot with a jitter overlay. It also provides some summary statistics on snowshow hare weights. This project showcases data visualization work with figures and tables.</description>
     </item>
     
   </channel>

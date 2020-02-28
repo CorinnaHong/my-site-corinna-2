@@ -104,9 +104,12 @@ oahu_watersheds
 </p>
 
 <br>
-<br>
 **References**
 <br>
 Hawaii Statewide GIS Program. (2017). Land Use Land Cover (LULC). Available from http://geoportal.hawaii.gov/datasets/land-use-land-cover-lulc
+
 <br>
 Hawaii Statewide GIS Program. (2017). Surface Water Hydrologic Unit Boundaries (Watersheds). Available from : http://geoportal.hawaii.gov/datasets/watersheds
+
+<br>
+Stairway to Heaven (Ryan Pernofski). (n.d.) Retrieved from: https://unsplash.com/photos/Ha8sRTj_ap8

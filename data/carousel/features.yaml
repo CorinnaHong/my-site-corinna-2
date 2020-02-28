@@ -2,9 +2,9 @@ weight: 2
 title: "Data Analysis Work"
 description: >
   <ul class="list-style-none">
-     <li>Data Visualization</li>
-     <li>Data Analysis</li>
-     <li>Spatial Analysis</li>
-     <li>Time Series Analysis</li>
+     <li>Maps</li>
+     <li>Data Analyses</li>
+     <li>Data Visualizations</li>
+     <li>Time Series Analyses</li>
    </ul>
 image: "img/carousel/field.jpg"

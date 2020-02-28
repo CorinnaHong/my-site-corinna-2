@@ -1,0 +1,78 @@
+---
+title: "Legume Nutrients"
+author: "Corinna Hong"
+date: "February 1, 2020"
+output: html_document
+banner: "img/banners/legumes.jpeg"
+---
+
+
+
+<p><br></p>
+<p>The U.S. Department of Agriculture’s FoodData Central analyzes and compiles nutrient and food component data for a wide variety of foods and beverages (U.S. Department of Agriculture, 2019). The dataset used for this project contains nutrient information for raw fruits and vegetables. This project will use the ordination method of principle component analysis to explore similarities and differences in legume and legume product nutrients.</p>
+<style>
+p.caption {
+  font-size: 0.9em;
+  font-style: italic;
+  color: grey;
+  margin-right: 10%;
+  margin-left: 14%;  
+  text-align: left;
+}
+</style>
+<pre class="r"><code># Load packages
+
+library(tidyverse)
+library(janitor)
+library(naniar) # to examine NAs
+library(ggfortify) # for biplot</code></pre>
+<pre class="r"><code># Read in data
+
+nutrients &lt;- read_csv(&quot;usda_nutrients.csv&quot;)</code></pre>
+<pre class="r"><code># Wrangle data
+
+nutrients_wrangle &lt;- nutrients %&gt;% 
+  clean_names() %&gt;%
+  filter(food_group == &quot;Legumes and Legume Products&quot;) %&gt;% 
+  select(energy_kcal:zinc_mg)</code></pre>
+<pre class="r"><code># Explore missings before running PCA
+
+naniar::gg_miss_var(nutrients_wrangle) # graph shows how many NA&#39;s for each variable (showed none for the data I selected)</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-1"></span>
+<img src="/blog/HW1_Task2_files/figure-html/unnamed-chunk-1-1.png" alt="**Missings in Data.** Visualization of how many NAs are in the data set for each variable. Data accessed at: https://fdc.nal.usda.gov/" width="672" />
+<p class="caption">
+Figure 1: <strong>Missings in Data.</strong> Visualization of how many NAs are in the data set for each variable. Data accessed at: <a href="https://fdc.nal.usda.gov/" class="uri">https://fdc.nal.usda.gov/</a>
+</p>
+</div>
+<pre class="r"><code># PCA for nutrients in Legumes and Legume products
+
+nutrients_pca &lt;- prcomp(nutrients_wrangle, scale = TRUE)
+nutrients_pca # Gives loading for every PC
+summary(nutrients_pca) # Proportion of variance explained by each PC
+# PC1 and PC2 together account for 47.98% of variance</code></pre>
+<pre class="r"><code>nutrients_biplot &lt;- autoplot(nutrients_pca,
+                      colour = NA,
+                      loadings.label = TRUE,
+                      loadings.label.size = 3,
+                      loadings.label.colour = &quot;black&quot;,
+                      loadings.label.repel = TRUE) + # forces labels to &quot;repel&quot; each other a little
+  theme_minimal()
+
+nutrients_biplot</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
+<img src="/blog/HW1_Task2_files/figure-html/unnamed-chunk-2-1.png" alt="**PCA biplot of nutrients in legumes and legume products.** Line biplot visualizing PCA results for nutrients in legumes and legume products. Lengths of each line indicate variances in the respective PC direction and angles between lines indicate correlation between nutrients. Data accessed at: https://fdc.nal.usda.gov/" width="672" />
+<p class="caption">
+Figure 2: <strong>PCA biplot of nutrients in legumes and legume products.</strong> Line biplot visualizing PCA results for nutrients in legumes and legume products. Lengths of each line indicate variances in the respective PC direction and angles between lines indicate correlation between nutrients. Data accessed at: <a href="https://fdc.nal.usda.gov/" class="uri">https://fdc.nal.usda.gov/</a>
+</p>
+</div>
+<p><br> Major takeaways from PCA and biplot: <br></p>
+<ul>
+<li>Vitamin A, vitamin E, and vitamin B6 have a correlation of 1 with each other.</li>
+<li>Protein and zinc have a correlation of 1 with each other.</li>
+<li>Vitamin A, vitamin E, and vitamin B6 have a correlation of -1 with vitamin C.</li>
+<li>Iron and phosphorus are positively correlated.</li>
+<li>Sugar and carbs are positively correlated.</li>
+<li>Vitamin B12 and energy have a correlation of 0.</li>
+</ul>
+<p><br> <strong>References:</strong> <br> Assorted-color Beans in Sack (Viktor Smith). (2014). Retrieved from: <a href="https://www.pexels.com/photo/assorted-color-beans-in-sack-1393382/" class="uri">https://www.pexels.com/photo/assorted-color-beans-in-sack-1393382/</a></p>
+<p><br> U.S. Department of Agriculture, Agricultural Research Service. FoodData Central, 2019. <a href="https://fdc.nal.usda.gov/" class="uri">https://fdc.nal.usda.gov/</a>.</p>

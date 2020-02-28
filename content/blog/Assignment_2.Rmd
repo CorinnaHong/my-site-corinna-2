@@ -3,6 +3,7 @@ title: "Changes in Crop Yield"
 author: "Corinna Hong"
 date: "March 9, 2019"
 output: html_document
+banner: "img/banners/crops.jfif"
 ---
 
 ```{r setup, include=FALSE}
@@ -11,7 +12,22 @@ knitr::opts_chunk$set(echo = TRUE,
                       message = FALSE)
 ```
 
+
+<style>
+p.caption {
+  font-size: 0.9em;
+  font-style: italic;
+  color: grey;
+  margin-right: 10%;
+  margin-left: 14%;  
+  text-align: left;
+}
+</style>
+
+
 ```{r, load packages}
+
+# Load Packages
 
 library(tidyverse)
 library(gganimate)
@@ -20,30 +36,30 @@ library(gganimate)
 
 ```{r, read data}
 
+# Read in data
+
 fertilizer <- read_csv("fertilizer.csv")
 grain <- read_csv("grain.csv")
 
 ```
 
-### 1.Patterns in Yield over Time
+```{r, fig.align = "center", out.width = "70%", fig.cap = "**Trends in Crop Yield.** Changes in U.S. production of four crops (1866-2018). Data accessed at: https://www.ers.usda.gov/data-products/feed-grains-database/feed-grains-yearbook-tables/"}
 
-a.
-
-```{r, patterns in yield over time, fig.align = "center", out.width = "70%"}
+# Explore patterns in yield over time
 
 yield_animate <- ggplot(grain, aes(x = year, y = yield)) +
   geom_line(aes(color = commodity)) +
   facet_wrap(~commodity, scale = "free") +
   guides(color = FALSE) +
-  labs(x = "\nYear", y = "Yield (bushels / acre)\n", title = "U.S. Production of Four Crops (1866 - 2018)\n") +
+  labs(x = "\nYear", y = "Yield (bushels / acre)\n") +
   theme_classic() +
-  transition_reveal(commodity, year)
+  transition_reveal(commodity, year) # animate the plot
 
 yield_animate
 
 ```
 
-b. The trend in barley is best described by a linear, low plateau (LLP) model. The overall hockeystick shape of the trend is a plateau until about 1945, then it begins to increase linearly into the 2000s. Corn can also be described by a LLP model. Like barley, the trend for corn is a plateau until about 1945, then it begins to increase linearly into the 2000s. Oats can also be described by a LLP model even though the plateau isn't as pronounced as seen in barley and corn. Once again, the trend is a plateau until about 1945, then a linear increase into the 2000s. Sorghum looks like a combination of LLP and linear, upper plateau. There is a plateau from 1925 to around 1945. After that, sorghum experiences a linear increase until around 1980 where it plateaus again.
+The trend in barley is best described by a linear, low plateau (LLP) model. The overall hockeystick shape of the trend is a plateau until about 1945, then it begins to increase linearly into the 2000s. Corn can also be described by a LLP model. Like barley, the trend for corn is a plateau until about 1945, then it begins to increase linearly into the 2000s. Oats can also be described by a LLP model even though the plateau isn't as pronounced as seen in barley and corn. Once again, the trend is a plateau until about 1945, then a linear increase into the 2000s. Sorghum looks like a combination of LLP and linear, upper plateau. There is a plateau from 1925 to around 1945. After that, sorghum experiences a linear increase until around 1980 where it plateaus again.
 
 ### 2. Fertilizer Use
 
@@ -51,18 +67,20 @@ a.
 
 ```{r, fertilizer wrange}
 
+# Wrangle fertilizer data
+
 fertilizer_wrangle <- fertilizer %>% 
   filter(ppa != "NA")
 
 ```
 
 
-```{r, fertilizer use over time, fig.align = "center"}
+```{r, fig.align = "center", fig.cap = "**Fertilizer Use Over Time.** U.S fertilizer use for three classes of fertilizers (1964-2016). Data accessed at: https://www.ers.usda.gov/data-products/fertilizer-use-and-price/"}
 
 fertilizer_graph <- ggplot(fertilizer_wrangle, aes(x = year, y = ppa))+
   geom_line(aes (color = fertilizer)) +
   facet_grid(crop ~ ., scale = "free") +
-  labs(x = "\nYear", y = "Fertilizer Use (pounds / acre)\n", title = "U.S. Fertilizer Use for Three Classes of Fertilizers (1964-2016)\n") +
+  labs(x = "\nYear", y = "Fertilizer Use (pounds / acre)\n") +
   guides(color = guide_legend(title = "Fertilizer")) +
   theme(plot.title = element_text(hjust = 0.5)) + # center title
   theme_classic() +
@@ -109,3 +127,14 @@ corn_graph
 ```
 
 b. For nitrogen fertilizer, it looks like there is a positive linear relationship between fertilizer use and corn yield. However, in phosphate and potassium, this is not the case. For phosphate, it looks like 60 pounds / acre produces the largest corn yield. For potassium, it looks like 80 pounds / acre produces the larger corn yield. 
+
+<br>
+**References:**
+<br>
+The Morning Harvest (Naseem Buras). (2019). Retrieved from: https://unsplash.com/photos/_gR_xZU2KcY
+
+<br>
+U.S. Department of Agriculture, Economic Research Service. Yearbook Tables, 2019. https://www.ers.usda.gov/data-products/feed-grains-database/feed-grains-yearbook-tables/.
+
+<br>
+U.S. Department of Agriculture, Economic Research Service. Fertilizer Use, 2019. https://www.ers.usda.gov/data-products/fertilizer-use-and-price/

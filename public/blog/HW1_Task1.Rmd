@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE,
 
 <br>
 
-Snowshoe hares are prevalent in northern boreal forests, such as those in Alaska. Capture-release studies conducted from 1999 to 2002 in Alaska's Bonanza Creek Experimental Forest collected physical data on this species (Kielland et al., 2017). This project visualizes snowshoe hare weights in a box-and-whisker plot with a jitter overlay. It also provides some summary statistics on snowshow hare weights. This project showcases my data visualization work with figures and tables. 
+Snowshoe hares are prevalent in northern boreal forests, such as those in Alaska. Capture-release studies conducted from 1999 to 2002 in Alaska's Bonanza Creek Experimental Forest collected physical data on this species (Kielland et al., 2017). This project visualizes snowshoe hare weights in a box-and-whisker plot with a jitter overlay. It also provides some summary statistics on snowshow hare weights. This project showcases data visualization work with figures and tables. 
 
 
 <style>
@@ -62,7 +62,7 @@ unique(hares_wrangle$sex) # check unique values of 'sex' column in wrangled data
 
 ```
 
-```{r, plot data, fig.align = 'center', fig.cap = "**Figure 1. Female and male snowshoe hare weights** Box-and-whisker plot with overlying jitter showing snowshoe hare body weight (g) for female (F) and male (M) hares at Bonanza Creek Experimental Forest from 1999 to 2002. Data accessed at: https://portal.lternet.edu/nis/mapbrowse?packageid=knb-lter-bnz.55.22"}
+```{r, fig.align = 'center', fig.cap = "**Female and male snowshoe hare weights** Box-and-whisker plot with overlying jitter showing snowshoe hare body weight (g) for female (F) and male (M) hares at Bonanza Creek Experimental Forest from 1999 to 2002. Data accessed at: https://portal.lternet.edu/nis/mapbrowse?packageid=knb-lter-bnz.55.22"}
 
 # Create graph
 
@@ -94,13 +94,13 @@ hares_summary <- hares_wrangle %>%
 ```
 
 
-```{r, finalize table}
+```{r}
 
 # Create final table
 
 hares_table <- kable(hares_summary, 
                      align = rep('c', 5), 
-                     caption = "**Table 1. Summary table of snowshoe hare weights.** Mean, standard deviation, and median weight (g) of snowshoe hares at Bonanza Creek Experimental Forest grouped by sex. Data was collected from 1999 to 2002. Data accessed at: https://portal.lternet.edu/nis/mapbrowse?packageid=knb-lter-bnz.55.22", 
+                     caption = "**Summary table of snowshoe hare weights.** Mean, standard deviation, and median weight (g) of snowshoe hares at Bonanza Creek Experimental Forest grouped by sex. Data was collected from 1999 to 2002. Data accessed at: https://portal.lternet.edu/nis/mapbrowse?packageid=knb-lter-bnz.55.22", 
                      col.names = c("Sex","Mean Weight (g)","Standard Deviation (g)","Median Weight (g)", "Sample Size")
                      ) %>% # rename columns
   kable_styling(full_width = F, position = "center", bootstrap_options = c("hover")) # Decrease table width and centers it
@@ -115,3 +115,6 @@ These exploratory summary statistics indicate that the mean weight (g) of female
 **References:**
 <br>
 Kielland, K., Chapin, F. S., and Ruess, R. W. (2017). Snowshoe hare physical data in Bonanza Creek Experimental Forest: 1999-Present. [Data set]. Envrionmental Data Initiative. https://doi.org/10.6073/pasta/03dce4856d79b91557d8e6ce2cbcdc14.
+
+<br>
+Snowshoe Hare (U.S. National Park Service). (n.d.). Retrieved from https://www.nps.gov/articles/snowshoe-hare.htm

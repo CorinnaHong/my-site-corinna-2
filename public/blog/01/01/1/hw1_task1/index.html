@@ -219,7 +219,7 @@
 
 
 <p><br></p>
-<p>Snowshoe hares are prevalent in northern boreal forests, such as those in Alaska. Capture-release studies conducted from 1999 to 2002 in Alaska’s Bonanza Creek Experimental Forest collected physical data on this species (Kielland et al., 2017). This project visualizes snowshoe hare weights in a box-and-whisker plot with a jitter overlay. It also provides some summary statistics on snowshow hare weights. This project showcases my data visualization work with figures and tables.</p>
+<p>Snowshoe hares are prevalent in northern boreal forests, such as those in Alaska. Capture-release studies conducted from 1999 to 2002 in Alaska’s Bonanza Creek Experimental Forest collected physical data on this species (Kielland et al., 2017). This project visualizes snowshoe hare weights in a box-and-whisker plot with a jitter overlay. It also provides some summary statistics on snowshow hare weights. This project showcases data visualization work with figures and tables.</p>
 <style>
 p.caption {
   font-size: 0.9em;
@@ -257,10 +257,10 @@ hare_boxplot &lt;- ggplot(hares_wrangle, aes(x = sex, y = weight)) +
   theme_classic()
 
 hare_boxplot</code></pre>
-<div class="figure" style="text-align: center">
-<img src="/blog/HW1_Task1_files/figure-html/plot%20data-1.png" alt="**Figure 1. Female and male snowshoe hare weights** Box-and-whisker plot with overlying jitter showing snowshoe hare body weight (g) for female (F) and male (M) hares at Bonanza Creek Experimental Forest from 1999 to 2002. Data accessed at: https://portal.lternet.edu/nis/mapbrowse?packageid=knb-lter-bnz.55.22" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-1"></span>
+<img src="/blog/HW1_Task1_files/figure-html/unnamed-chunk-1-1.png" alt="**Female and male snowshoe hare weights** Box-and-whisker plot with overlying jitter showing snowshoe hare body weight (g) for female (F) and male (M) hares at Bonanza Creek Experimental Forest from 1999 to 2002. Data accessed at: https://portal.lternet.edu/nis/mapbrowse?packageid=knb-lter-bnz.55.22" width="672" />
 <p class="caption">
-(#fig:plot data)<strong>Figure 1. Female and male snowshoe hare weights</strong> Box-and-whisker plot with overlying jitter showing snowshoe hare body weight (g) for female (F) and male (M) hares at Bonanza Creek Experimental Forest from 1999 to 2002. Data accessed at: <a href="https://portal.lternet.edu/nis/mapbrowse?packageid=knb-lter-bnz.55.22" class="uri">https://portal.lternet.edu/nis/mapbrowse?packageid=knb-lter-bnz.55.22</a>
+Figure 1: <strong>Female and male snowshoe hare weights</strong> Box-and-whisker plot with overlying jitter showing snowshoe hare body weight (g) for female (F) and male (M) hares at Bonanza Creek Experimental Forest from 1999 to 2002. Data accessed at: <a href="https://portal.lternet.edu/nis/mapbrowse?packageid=knb-lter-bnz.55.22" class="uri">https://portal.lternet.edu/nis/mapbrowse?packageid=knb-lter-bnz.55.22</a>
 </p>
 </div>
 <p>The distrubiton of female and male snowshoe hare weights look pretty similar to each other. Median snowshow hare weight (g) between female and male hares is shown by the center line in the box. The boxes are bounded by the 25th and 75th percentile and the whiskers extend to the last weight observation within one step. These elements of the plot look pretty close between female and male snowshoe hares, with female snowshoe hares having a slightly wider range in body weights.</p>
@@ -278,7 +278,7 @@ hares_summary &lt;- hares_wrangle %&gt;%
 
 hares_table &lt;- kable(hares_summary, 
                      align = rep(&#39;c&#39;, 5), 
-                     caption = &quot;**Table 1. Summary table of snowshoe hare weights.** Mean, standard deviation, and median weight (g) of snowshoe hares at Bonanza Creek Experimental Forest grouped by sex. Data was collected from 1999 to 2002. Data accessed at: https://portal.lternet.edu/nis/mapbrowse?packageid=knb-lter-bnz.55.22&quot;, 
+                     caption = &quot;**Summary table of snowshoe hare weights.** Mean, standard deviation, and median weight (g) of snowshoe hares at Bonanza Creek Experimental Forest grouped by sex. Data was collected from 1999 to 2002. Data accessed at: https://portal.lternet.edu/nis/mapbrowse?packageid=knb-lter-bnz.55.22&quot;, 
                      col.names = c(&quot;Sex&quot;,&quot;Mean Weight (g)&quot;,&quot;Standard Deviation (g)&quot;,&quot;Median Weight (g)&quot;, &quot;Sample Size&quot;)
                      ) %&gt;% # rename columns
   kable_styling(full_width = F, position = &quot;center&quot;, bootstrap_options = c(&quot;hover&quot;)) # Decrease table width and centers it
@@ -286,7 +286,7 @@ hares_table &lt;- kable(hares_summary,
 hares_table</code></pre>
 <table class="table table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
-(#tab:finalize table)<strong>Table 1. Summary table of snowshoe hare weights.</strong> Mean, standard deviation, and median weight (g) of snowshoe hares at Bonanza Creek Experimental Forest grouped by sex. Data was collected from 1999 to 2002. Data accessed at: <a href="https://portal.lternet.edu/nis/mapbrowse?packageid=knb-lter-bnz.55.22" class="uri">https://portal.lternet.edu/nis/mapbrowse?packageid=knb-lter-bnz.55.22</a>
+<span id="tab:unnamed-chunk-2">Table 1: </span><strong>Summary table of snowshoe hare weights.</strong> Mean, standard deviation, and median weight (g) of snowshoe hares at Bonanza Creek Experimental Forest grouped by sex. Data was collected from 1999 to 2002. Data accessed at: <a href="https://portal.lternet.edu/nis/mapbrowse?packageid=knb-lter-bnz.55.22" class="uri">https://portal.lternet.edu/nis/mapbrowse?packageid=knb-lter-bnz.55.22</a>
 </caption>
 <thead>
 <tr>
@@ -346,6 +346,7 @@ M
 </table>
 <p>These exploratory summary statistics indicate that the mean weight (g) of female snowshoe hares is greater than that of males. This trend is also reflected in the median weight for female and male hares. After visualizing this data with a box-and-whisker plot, these summary statistics are not suprising.</p>
 <p><br> <strong>References:</strong> <br> Kielland, K., Chapin, F. S., and Ruess, R. W. (2017). Snowshoe hare physical data in Bonanza Creek Experimental Forest: 1999-Present. [Data set]. Envrionmental Data Initiative. <a href="https://doi.org/10.6073/pasta/03dce4856d79b91557d8e6ce2cbcdc14" class="uri">https://doi.org/10.6073/pasta/03dce4856d79b91557d8e6ce2cbcdc14</a>.</p>
+<p><br> Snowshoe Hare (U.S. National Park Service). (n.d.). Retrieved from <a href="https://www.nps.gov/articles/snowshoe-hare.htm" class="uri">https://www.nps.gov/articles/snowshoe-hare.htm</a></p>
 
                         </div>
                         
@@ -405,7 +406,7 @@ M
                     <div class="image same-height-always">
                         <a href="/blog/01/01/1/assignment_2/">
                           
-                            <img src="/img/placeholder.png" class="img-responsive" alt="Changes in Crop Yield">
+                            <img src="/img/banners/crops.jfif" class="img-responsive" alt="Changes in Crop Yield">
                           
                         </a>
                     </div>
@@ -429,14 +430,14 @@ M
                 
                 <div class="item same-height-row clearfix">
                     <div class="image same-height-always">
-                        <a href="/blog/01/01/1/hw1_task1/">
+                        <a href="/blog/01/01/1/hw1_task2/">
                           
-                            <img src="/img/banners/snowshoe_hares_nps.jpg" class="img-responsive" alt="Snowshoe Hares">
+                            <img src="/img/banners/legumes.jpeg" class="img-responsive" alt="Legume Nutrients">
                           
                         </a>
                     </div>
                     <div class="name same-height-always">
-                        <h5><a href="/blog/01/01/1/hw1_task1/">Snowshoe Hares</a></h5>
+                        <h5><a href="/blog/01/01/1/hw1_task2/">Legume Nutrients</a></h5>
                     </div>
                 </div>
                 

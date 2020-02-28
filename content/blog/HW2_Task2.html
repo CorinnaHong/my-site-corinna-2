@@ -1,0 +1,105 @@
+---
+title: "Salmon Counts at Bonneville Dam"
+author: "Corinna Hong"
+date: "February 18, 2020"
+output: html_document
+banner: "img/banners/steelhead.jpg"
+---
+
+
+
+<p><br></p>
+<p>Bonneville Lock and Dam’s first powerhouse was completed in 1938 on the Columbia River in Oregon to provide hydropower to the Pacific Northwest (U.S. Army Corps of Engineers, n.d.). This project visualizes changes in steelhead salmon passage counts across Bonneville Dam from 1940 - 2019. It first looks at changes in daily counts, then changes in monthly and yearly counts over the same time period. This project showcases time series data work.</p>
+<style>
+p.caption {
+  font-size: 0.9em;
+  font-style: italic;
+  color: grey;
+  margin-right: 10%;
+  margin-left: 15%;  
+  text-align: left;
+}
+</style>
+<pre class="r"><code># Load packages
+
+library(tidyverse)
+library(janitor)
+library(lubridate)
+library(here)
+library(paletteer)</code></pre>
+<pre class="r"><code># Read in data
+
+salmon &lt;- read_csv(&quot;cbr_fish_passage_bonneville_allyrs_steelhead.csv&quot;) %&gt;% 
+  clean_names()</code></pre>
+<pre class="r"><code># Wrangle data for daily counts
+
+salmon_day &lt;- salmon %&gt;%
+  unite(year, mm_dd, col = &quot;date&quot;, sep = &quot;-&quot;) %&gt;% # unite year and mm_dd column and separate values with &quot;-&quot;
+  mutate(yr_mo_day = lubridate::parse_date_time(date, &quot;ydm&quot;)) %&gt;% # format date
+  drop_na(yr_mo_day, value) # drop NAs from value column</code></pre>
+<pre class="r"><code># Create graph of daily counts
+
+salmon_day_gg &lt;- ggplot(data = salmon_day, aes(x = yr_mo_day, y = value)) +
+  geom_line(color = &quot;forestgreen&quot;) +
+  labs (x = &quot;Year&quot;, y = &quot;Count&quot;) +
+  scale_y_continuous() +
+  theme_minimal()
+
+salmon_day_gg</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
+<img src="/blog/HW2_Task2_files/figure-html/unnamed-chunk-3-1.png" alt="**Daily Steelhead Salmon Passage at Bonneville Dam (1940 - 2019).** Time-seris plot showing daily changes in steelhead salmon counts at Bonneville Dam. Data accessed at: http://www.cbr.washington.edu/dart/query/adult_graph_text" width="672" />
+<p class="caption">
+Figure 1: <strong>Daily Steelhead Salmon Passage at Bonneville Dam (1940 - 2019).</strong> Time-seris plot showing daily changes in steelhead salmon counts at Bonneville Dam. Data accessed at: <a href="http://www.cbr.washington.edu/dart/query/adult_graph_text" class="uri">http://www.cbr.washington.edu/dart/query/adult_graph_text</a>
+</p>
+</div>
+<p>A time-series plot of daily steelhead passage shows changes in the number of steelhead throughout each year. Each year contains a peak where passage counts are the highest. The pattern suggests that passage counts have some seasonality; counts start off low at the beginning of the year, slowly increase until the reach a peak, then being to decrease again.</p>
+<pre class="r"><code># Wrangle data for monthly counts
+
+salmon_parse &lt;- salmon_day %&gt;% 
+  mutate(month = month(yr_mo_day, label = TRUE)) %&gt;% # pull month from yr_mo_day, label = true gives months 3 letter label
+  mutate(year = year(yr_mo_day))
+
+salmon_monthly &lt;- salmon_parse %&gt;% 
+  group_by(year, month) %&gt;%
+  summarize(total = sum(value)) # Add values column by month for each year</code></pre>
+<pre class="r"><code># Graph data for monthly counts
+
+salmon_month_gg &lt;- ggplot(salmon_monthly, aes(x = month, y = total, group = year)) + # separate by year
+  geom_line(aes(color = year)) + # color by year
+  labs (x = &quot;Month&quot;, y = &quot;Count&quot;) +
+  scale_color_paletteer_c(&quot;ggthemes::Blue-Teal&quot;) + # change color palette
+  scale_y_continuous() +
+  theme_minimal()
+
+salmon_month_gg</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
+<img src="/blog/HW2_Task2_files/figure-html/unnamed-chunk-5-1.png" alt="**Monthly Steelhead Salmon Passage at Bonneville Dam (1940 - 2019).** Time-seris plot showing monthly changes in steelhead salmon counts at Bonneville Dam each year. Counts were totaled by month then plotted for each year. Data accessed at: http://www.cbr.washington.edu/dart/query/adult_graph_text" width="672" />
+<p class="caption">
+Figure 2: <strong>Monthly Steelhead Salmon Passage at Bonneville Dam (1940 - 2019).</strong> Time-seris plot showing monthly changes in steelhead salmon counts at Bonneville Dam each year. Counts were totaled by month then plotted for each year. Data accessed at: <a href="http://www.cbr.washington.edu/dart/query/adult_graph_text" class="uri">http://www.cbr.washington.edu/dart/query/adult_graph_text</a>
+</p>
+</div>
+<p>Monthly passage counts at Bonneville Dam shows seasonality to steelhead passage. Passage counts increase in the summer months and peak in August. It also suggests an overall trend of an increase in the number of steelhead each year.</p>
+<pre class="r"><code># Wrangle data for yearly counts
+
+salmon_yearly &lt;- salmon_parse %&gt;% 
+  group_by(year) %&gt;% 
+  summarize(total = sum(value))</code></pre>
+<pre class="r"><code># Graph data for yearly counts
+
+salmon_year_gg &lt;- ggplot(salmon_yearly, aes(x = year, y = total)) +
+  geom_line(color = &quot;forestgreen&quot;) +
+  labs (x = &quot;Year&quot;, y = &quot;Count&quot;) +
+  scale_y_continuous() +
+  theme_minimal()
+
+salmon_year_gg</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-7"></span>
+<img src="/blog/HW2_Task2_files/figure-html/unnamed-chunk-7-1.png" alt="**Annual Steelhead Salmon Passage at Bonneville Dam (1940 - 2019).** Time-seris plot showing annual changes in steelhead salmon counts at Bonneville Dam. Counts were totaled by year. Data accessed at: http://www.cbr.washington.edu/dart/query/adult_graph_text" width="672" />
+<p class="caption">
+Figure 3: <strong>Annual Steelhead Salmon Passage at Bonneville Dam (1940 - 2019).</strong> Time-seris plot showing annual changes in steelhead salmon counts at Bonneville Dam. Counts were totaled by year. Data accessed at: <a href="http://www.cbr.washington.edu/dart/query/adult_graph_text" class="uri">http://www.cbr.washington.edu/dart/query/adult_graph_text</a>
+</p>
+</div>
+<p>Annual steelhead passage counts through Bonneville Dam show an overall increasing trend in total salmon counts each year.</p>
+<p><br> <strong>References</strong> <br> Columbia River DART, Columbia Basin Research, University of Washington. (2019). Adult Passage Graphics &amp; Text. Available from <a href="http://www.cbr.washington.edu/dart/query/adult_graph_text" class="uri">http://www.cbr.washington.edu/dart/query/adult_graph_text</a></p>
+<p><br> Steelhead Trout (NOAA Fisheries). (n.d.). Retrieved from <a href="https://www.fisheries.noaa.gov/species/steelhead-trout" class="uri">https://www.fisheries.noaa.gov/species/steelhead-trout</a></p>
+<p><br> U.S. Army Corps of Engineers. (n.d). <em>Bonneville Lock &amp; Dam</em>. Retrieved February 19, 2020, from <a href="https://www.nwp.usace.army.mil/bonneville/" class="uri">https://www.nwp.usace.army.mil/bonneville/</a></p>
