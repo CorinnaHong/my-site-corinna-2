@@ -16,7 +16,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/blog/01/01/1/assignment_2/</guid>
-      <description>p.caption {font-size: 0.9em;font-style: italic;color: grey;margin-right: 10%;margin-left: 14%; text-align: left;}# Load Packageslibrary(tidyverse)library(gganimate)# Read in datafertilizer &amp;lt;- read_csv(&amp;quot;fertilizer.csv&amp;quot;)grain &amp;lt;- read_csv(&amp;quot;grain.csv&amp;quot;)# Explore patterns in yield over timeyield_animate &amp;lt;- ggplot(grain, aes(x = year, y = yield)) +geom_line(aes(color = commodity)) +facet_wrap(~commodity, scale = &amp;quot;free&amp;quot;) +guides(color = FALSE) +labs(x = &amp;quot;\nYear&amp;quot;, y = &amp;quot;Yield (bushels / acre)\n&amp;quot;) +theme_classic() +transition_reveal(commodity, year) # animate the plotyield_animateFigure 1: Trends in Crop Yield.</description>
+      <description>Agriculture in the United States is a huge economic sector. According to Statistica, there are over 2 million farms in the U.S. that employ over 900,000 people. Additionally, exports of U.S. agricultural products were worth around $133 billion USD in 2015 (Statistica Reserach Department, 2019). This project looks at patterns of U.S crop yield and fertilizer use over time for different types of crops. The final piece is a case study of fertilizer use on corn yield.</description>
     </item>
     
     <item>
@@ -25,7 +25,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/blog/01/01/1/hw2_task3/</guid>
-      <description>testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview FIN</description>
+      <description>This project maps different spatial data from Hawaii Statewide GIS Program’s datasets. One map features a few different land use/land cover types on Oahu and another shows the top 10 largest watersheds on Oahu. The datasets used for these maps included spatial data for all eight Hawaiian Islands. In order to only showcase Oahu, the map area was cropped, then filtered to only include the data I wanted to display.</description>
     </item>
     
     <item>
@@ -34,8 +34,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/blog/01/01/1/hw1_task2/</guid>
-      <description>The U.S. Department of Agriculture’s FoodData Central analyzes and compiles nutrient and food component data for a wide variety of foods and beverages (U.S. Department of Agriculture, 2019). The dataset used for this project contains nutrient information for raw fruits and vegetables. This project will use the ordination method of principle component analysis to explore similarities and differences in legume and legume product nutrients.
-p.caption {font-size: 0.</description>
+      <description>The U.S. Department of Agriculture’s FoodData Central analyzes and compiles nutrient and food component data for a wide variety of foods and beverages (U.S. Department of Agriculture, 2019). The dataset used for this project contains nutrient information for raw fruits and vegetables. Instead of analyzing each fruit and vegetable, this project will use the ordination method of principle component analysis to explore similarities and differences in legume and legume product nutrients.</description>
     </item>
     
     <item>

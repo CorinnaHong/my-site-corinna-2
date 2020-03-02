@@ -217,6 +217,8 @@
                           
 
 
+<p><br></p>
+<p>Agriculture in the United States is a huge economic sector. According to Statistica, there are over 2 million farms in the U.S. that employ over 900,000 people. Additionally, exports of U.S. agricultural products were worth around $133 billion USD in 2015 (Statistica Reserach Department, 2019). This project looks at patterns of U.S crop yield and fertilizer use over time for different types of crops. The final piece is a case study of fertilizer use on corn yield.</p>
 <style>
 p.caption {
   font-size: 0.9em;
@@ -241,23 +243,18 @@ yield_animate &lt;- ggplot(grain, aes(x = year, y = yield)) +
   geom_line(aes(color = commodity)) +
   facet_wrap(~commodity, scale = &quot;free&quot;) +
   guides(color = FALSE) +
-  labs(x = &quot;\nYear&quot;, y = &quot;Yield (bushels / acre)\n&quot;) +
+  labs(x = &quot;\nYear&quot;, y = &quot;Yield (bushels / acre)\n&quot;) + # space between label and plot
   theme_classic() +
   transition_reveal(commodity, year) # animate the plot
 
 yield_animate</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-1"></span>
-<img src="/blog/Assignment_2_files/figure-html/unnamed-chunk-1-1.gif" alt="**Trends in Crop Yield.** Changes in U.S. production of four crops (1866-2018). Data accessed at: https://www.ers.usda.gov/data-products/feed-grains-database/feed-grains-yearbook-tables/" width="70%" />
+<img src="/blog/Assignment_2_files/figure-html/unnamed-chunk-1-1.gif" alt="**Trends in Crop Yield (1866 - 2018).** Changes in U.S. production of four crops. Yield measured in bushels per acre for barley, corn, oats, and sorghum. Data accessed at: https://www.ers.usda.gov/data-products/feed-grains-database/feed-grains-yearbook-tables/" width="70%" />
 <p class="caption">
-Figure 1: <strong>Trends in Crop Yield.</strong> Changes in U.S. production of four crops (1866-2018). Data accessed at: <a href="https://www.ers.usda.gov/data-products/feed-grains-database/feed-grains-yearbook-tables/" class="uri">https://www.ers.usda.gov/data-products/feed-grains-database/feed-grains-yearbook-tables/</a>
+Figure 1: <strong>Trends in Crop Yield (1866 - 2018).</strong> Changes in U.S. production of four crops. Yield measured in bushels per acre for barley, corn, oats, and sorghum. Data accessed at: <a href="https://www.ers.usda.gov/data-products/feed-grains-database/feed-grains-yearbook-tables/" class="uri">https://www.ers.usda.gov/data-products/feed-grains-database/feed-grains-yearbook-tables/</a>
 </p>
 </div>
-<p>The trend in barley is best described by a linear, low plateau (LLP) model. The overall hockeystick shape of the trend is a plateau until about 1945, then it begins to increase linearly into the 2000s. Corn can also be described by a LLP model. Like barley, the trend for corn is a plateau until about 1945, then it begins to increase linearly into the 2000s. Oats can also be described by a LLP model even though the plateau isn’t as pronounced as seen in barley and corn. Once again, the trend is a plateau until about 1945, then a linear increase into the 2000s. Sorghum looks like a combination of LLP and linear, upper plateau. There is a plateau from 1925 to around 1945. After that, sorghum experiences a linear increase until around 1980 where it plateaus again.</p>
-<div id="fertilizer-use" class="section level3">
-<h3>2. Fertilizer Use</h3>
-<ol style="list-style-type: lower-alpha">
-<li></li>
-</ol>
+<p>Yield in all four crops rapidly increased after the 1950s. All four of these growth trends can best be described described by a linear, low plateau (LLP) model. The overall hockeystick shape of the trend is a plateau in yield until about 1945, where it begins to increase linearly into the 2000s. The trend in Sorghum’s yield also looks like it has an upper plateau. There is a plateau from 1925 to around 1945. After that, sorghum experiences a linear increase until around 1980 where it plateaus again.</p>
 <pre class="r"><code># Wrangle fertilizer data
 
 fertilizer_wrangle &lt;- fertilizer %&gt;% 
@@ -273,21 +270,13 @@ fertilizer_wrangle &lt;- fertilizer %&gt;%
 
 fertilizer_graph</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
-<img src="/blog/Assignment_2_files/figure-html/unnamed-chunk-2-1.png" alt="**Fertilizer Use Over Time.** U.S fertilizer use for three classes of fertilizers (1964-2016). Data accessed at: https://www.ers.usda.gov/data-products/fertilizer-use-and-price/" width="672" />
+<img src="/blog/Assignment_2_files/figure-html/unnamed-chunk-2-1.png" alt="**Fertilizer Use Over Time (1964-2016).** U.S fertilizer use for three classes of fertilizers. Fertilizer use measured in pounds per acre for nitrogen, phosphate, and potassium. Data accessed at: https://www.ers.usda.gov/data-products/fertilizer-use-and-price/" width="672" />
 <p class="caption">
-Figure 2: <strong>Fertilizer Use Over Time.</strong> U.S fertilizer use for three classes of fertilizers (1964-2016). Data accessed at: <a href="https://www.ers.usda.gov/data-products/fertilizer-use-and-price/" class="uri">https://www.ers.usda.gov/data-products/fertilizer-use-and-price/</a>
+Figure 2: <strong>Fertilizer Use Over Time (1964-2016).</strong> U.S fertilizer use for three classes of fertilizers. Fertilizer use measured in pounds per acre for nitrogen, phosphate, and potassium. Data accessed at: <a href="https://www.ers.usda.gov/data-products/fertilizer-use-and-price/" class="uri">https://www.ers.usda.gov/data-products/fertilizer-use-and-price/</a>
 </p>
 </div>
-<ol start="2" style="list-style-type: lower-alpha">
-<li><p>Nitrogen fertilizer use is highest in corn and wheat. This indicates that corn and wheat are nitrogen limited. Soybeans, on the other hand, are low in nitrogen fertilizer use indicaing that they are not nitrogen limited. Instead, soybeans have the highest potassium use meaning that it is most likely potassium limited. In corn and wheat potassium use is in the middle. Corn and wheat have the lowest phosphate use and phosphate use is soybeans is in the middle.</p></li>
-<li><p>Soybeans are high in potassium fertilizer use, medium in phosphate use, and low in nitrogen use. The low application of nitrogen fertilizer makes sense because soybeans are able to fix atmospheric nitrogen through symbiotic bacteria living in their roots (Hardarzon, 1984). However, minimal application of nitrogen is used to ensure maximum crop yield (Hardarzon, 1984). Soybean yeild can also be increased through the addition of potassium (Pettigrew, 2008). This explains why potassiums fertilizer is used heavily on soybeans. Finally, phosphate is added to ensure nitrate uptake by the plant (Rufty et al.,1993).</p></li>
-</ol>
-</div>
-<div id="case-study-corn-yield-and-fertilizer-use" class="section level3">
-<h3>3. Case Study: Corn Yield and Fertilizer Use</h3>
-<ol style="list-style-type: lower-alpha">
-<li></li>
-</ol>
+<p>Nitrogen fertilizer use is highest in corn and wheat. This indicates that corn and wheat are nitrogen limited. Soybeans, on the other hand, are low in nitrogen fertilizer use indicaing that they are not nitrogen limited. Instead, soybeans have the highest potassium use meaning that it is most likely potassium limited. In corn and wheat potassium use is in the middle. Corn and wheat have the lowest phosphate use and phosphate use is soybeans is in the middle.</p>
+<p>Soybeans are high in potassium fertilizer use, medium in phosphate use, and low in nitrogen use. The low application of nitrogen fertilizer makes sense because soybeans are able to fix atmospheric nitrogen through symbiotic bacteria living in their roots (Hardarzon, 1984). However, minimal application of nitrogen is used to ensure maximum crop yield (Hardarzon, 1984). Soybean yeild can also be increased through the addition of potassium (Pettigrew, 2008). This explains why potassiums fertilizer is used heavily on soybeans. Finally, phosphate is added to ensure nitrate uptake by the plant (Rufty et al., 1993).</p>
 <pre class="r"><code>grain_rename &lt;- grain %&gt;%
   rename(crop = commodity)
 
@@ -299,19 +288,25 @@ corn_fertilizer &lt;- grain_fertilizer %&gt;%
 <pre class="r"><code>corn_graph &lt;- ggplot(corn_fertilizer, aes(x = ppa, y = yield)) +
   geom_point(aes(color = year)) +
   facet_wrap(~fertilizer, scale = &quot;free&quot;) +
-  labs(x = &quot;\nFertilizer Use (pounds / acre)&quot;, y = &quot;Yield (bushels / acre)\n&quot;, title = &quot;U.S. Corn Yield from Three Different Classes of Fertilizers (1964-2016)\n&quot;) +
+  labs(x = &quot;\nFertilizer Use (pounds / acre)&quot;, y = &quot;Yield (bushels / acre)\n&quot;) +
   labs(color = &quot;Year&quot;) +
   theme_classic()
 
 corn_graph</code></pre>
-<p><img src="/blog/Assignment_2_files/figure-html/corn%20case%20study%20graph-1.png" width="672" style="display: block; margin: auto;" /></p>
-<ol start="2" style="list-style-type: lower-alpha">
-<li>For nitrogen fertilizer, it looks like there is a positive linear relationship between fertilizer use and corn yield. However, in phosphate and potassium, this is not the case. For phosphate, it looks like 60 pounds / acre produces the largest corn yield. For potassium, it looks like 80 pounds / acre produces the larger corn yield.</li>
-</ol>
-<p><br> <strong>References:</strong> <br> The Morning Harvest (Naseem Buras). (2019). Retrieved from: <a href="https://unsplash.com/photos/_gR_xZU2KcY" class="uri">https://unsplash.com/photos/_gR_xZU2KcY</a></p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
+<img src="/blog/Assignment_2_files/figure-html/unnamed-chunk-3-1.png" alt="**Corn Case Study.** U.S. Corn Yield measured in bushels per acre from three different classes of fertilizers from 1964-2016. Three classes of fertilizers are shown: Nitrogen, phosphate, and potassium. Data points are color coded based on year with lighter blues indicating more recent years. Data accessed at: https://www.ers.usda.gov/data-products/fertilizer-use-and-price/" width="672" />
+<p class="caption">
+Figure 3: <strong>Corn Case Study.</strong> U.S. Corn Yield measured in bushels per acre from three different classes of fertilizers from 1964-2016. Three classes of fertilizers are shown: Nitrogen, phosphate, and potassium. Data points are color coded based on year with lighter blues indicating more recent years. Data accessed at: <a href="https://www.ers.usda.gov/data-products/fertilizer-use-and-price/" class="uri">https://www.ers.usda.gov/data-products/fertilizer-use-and-price/</a>
+</p>
+</div>
+<p>For nitrogen fertilizer, it looks like there is a positive linear relationship between fertilizer use and corn yield. However, in phosphate and potassium, this is not the case. For phosphate, it looks like 60 pounds/acre produces the largest corn yield. For potassium, it looks like 80 pounds/acre produces the larger corn yield. This case study shows that more fertilizer does not necessary translate to higher yields. From the data, it looks like there are limits to the amount of fertilizer that crops can uptake.</p>
+<p><br> <strong>References:</strong> <br> Hardarson, G., Zapata, F. &amp; Danso, S. K. A. Effect of plant genotype and nitrogen fertilizer on symbiotic nitrogen fixation by soybean cultivars. Plant Soil 82, 397–405 (1984).</p>
+<p><br> Pettigrew, W. T. Potassium influences on yield and quality production for maize, wheat, soybean and cotton. Physiol. Plant. 133, 670–681 (2008).</p>
+<p><br> Rufty, T. W., Israel, D. W., Volk, R. J., Qiu, J. &amp; Sa, T. Phosphate Regulation of Nitrate Assimilation in Soybean. J. Exp. Bot. 44, 879–891 (1993).</p>
+<p><br> The Morning Harvest (Naseem Buras). (2019). Retrieved from: <a href="https://unsplash.com/photos/_gR_xZU2KcY" class="uri">https://unsplash.com/photos/_gR_xZU2KcY</a></p>
+<p><br> U.S. Agriculture - Statistics &amp; Facts. Statistica Research Department. 2019. <a href="https://www.statista.com/topics/1126/us-agriculture/" class="uri">https://www.statista.com/topics/1126/us-agriculture/</a></p>
 <p><br> U.S. Department of Agriculture, Economic Research Service. Yearbook Tables, 2019. <a href="https://www.ers.usda.gov/data-products/feed-grains-database/feed-grains-yearbook-tables/" class="uri">https://www.ers.usda.gov/data-products/feed-grains-database/feed-grains-yearbook-tables/</a>.</p>
 <p><br> U.S. Department of Agriculture, Economic Research Service. Fertilizer Use, 2019. <a href="https://www.ers.usda.gov/data-products/fertilizer-use-and-price/" class="uri">https://www.ers.usda.gov/data-products/fertilizer-use-and-price/</a></p>
-</div>
 
                         </div>
                         

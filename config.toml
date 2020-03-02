@@ -58,7 +58,7 @@ paginate = 5
 [[menu.topbar]]
     weight = 3
     name = "CV"
-    url = "mailto:your@email.com" # FIGURE OUT HOW TO LINK RESUME
+    url = "pdf/test_cv.pdf" # UPDATE RESUME
     pre = "<i class='fas fa-2x fa-file-alt'></i>"
 
 [params]

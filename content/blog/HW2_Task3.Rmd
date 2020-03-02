@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE,
                       warning = FALSE)
 ```
 
-testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview testing text length in preview FIN
+This project maps different spatial data from Hawaii Statewide GIS Program's datasets. One map features a few different land use/land cover types on Oahu and another shows the top 10 largest watersheds on Oahu. The datasets used for these maps included spatial data for all eight Hawaiian Islands. In order to only showcase Oahu, the map area was cropped, then filtered to only include the data I wanted to display. The maps are also interactive, allowing users to zoom in and out. 
 
 
 
@@ -51,7 +51,8 @@ watersheds <- read_sf(dsn = here("Watersheds"), layer = "Watersheds")
 land_cover_oahu <- land_use %>%
   dplyr::select(landcover) %>%
   filter(landcover != 0) %>%  # Remove land use category of 0
-  st_crop(xmin = -158.31, xmax = -157.62, ymin = 21.26, ymax = 21.75) # Crop to Oahu
+  filter(landcover =="Residential"| landcover == "Commercial and Services" | landcover == "Bays and Estuaries" | landcover == "Evergreen Forest Land") %>% 
+  st_crop(xmin = -158.31, xmax = -157.62, ymin = 21.26, ymax = 21.75)  # Crop to Oahu
   
 ```
 
@@ -70,7 +71,7 @@ oahu_map
 
 ```
 <p style="font-size:0.9em; font-style:italic; color: grey">
-**Figure 1. Land Use Land Cover Types on Oahu.** Historical land use and land cover classification data as of 1976. Data accessed at: http://geoportal.hawaii.gov/datasets/land-use-land-cover-lulc?geometry=-165.822%2C18.755%2C-149.134%2C22.354
+**Figure 1. Land Use Land Cover Types on Oahu.** Location of bays and estuaries, commercial, evergreen forest, and residential land use/land cover (LULC) types based on historical LULC classification data as of 1976. Data accessed at: http://geoportal.hawaii.gov/datasets/land-use-land-cover-lulc?geometry=-165.822%2C18.755%2C-149.134%2C22.354
 </p>
 
 
@@ -79,8 +80,10 @@ oahu_map
 # Wrangle data for watersheds
 
 watersheds_oahu <- watersheds %>% 
-  dplyr::select(wuname) %>% 
-  st_crop(xmin = -158.31, xmax = -157.62, ymin = 21.26, ymax = 21.75) # Crop to Oahu
+  dplyr::select(wuname, hucarea) %>% 
+  st_crop(xmin = -158.31, xmax = -157.62, ymin = 21.26, ymax = 21.75) %>%  # Crop to Oahu
+  arrange(-hucarea) %>%  # arrange from largest to smallest area in square meters
+  head(10) # Gives top 10
 
 ```
 
@@ -100,7 +103,7 @@ oahu_watersheds
 
 ```
 <p style="font-size:0.9em; font-style:italic; color: grey">
-**Figure 2. Oahu's Watersheds.** Watersheds of Oahu layered over ESRI World Topomap. Data accessed at: http://geoportal.hawaii.gov/datasets/watersheds?geometry=-165.822%2C18.755%2C-149.134%2C22.354
+**Figure 2. Oahu's Watersheds.** Top 10 largest watersheds of Oahu layered over ESRI World Topomap. Area of watersheds are measured in square meters as calculated by the GIS. Data accessed at: http://geoportal.hawaii.gov/datasets/watersheds?geometry=-165.822%2C18.755%2C-149.134%2C22.354
 </p>
 
 <br>
