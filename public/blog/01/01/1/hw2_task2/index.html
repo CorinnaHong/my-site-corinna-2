@@ -277,7 +277,7 @@ salmon_month_gg &lt;- ggplot(salmon_monthly, aes(x = month, y = total, group = y
   geom_line(aes(color = year)) + # color by year
   labs (x = &quot;Month&quot;, y = &quot;Count&quot;) +
   scale_color_paletteer_c(&quot;ggthemes::Blue-Teal&quot;) + # change color palette
-  scale_y_continuous() +
+  scale_y_continuous(labels = function(x) format(x, scientific = FALSE)) + # Get rid of scientific notation in counts
   theme_minimal()
 
 salmon_month_gg</code></pre>
@@ -298,7 +298,7 @@ salmon_yearly &lt;- salmon_parse %&gt;%
 salmon_year_gg &lt;- ggplot(salmon_yearly, aes(x = year, y = total)) +
   geom_line(color = &quot;forestgreen&quot;) +
   labs (x = &quot;Year&quot;, y = &quot;Count&quot;) +
-  scale_y_continuous() +
+  scale_y_continuous(labels = function(x) format(x, scientific = FALSE)) +
   theme_minimal()
 
 salmon_year_gg</code></pre>
