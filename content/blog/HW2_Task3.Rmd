@@ -52,7 +52,7 @@ land_cover_oahu <- land_use %>%
   dplyr::select(landcover) %>%
   filter(landcover != 0) %>%  # Remove land use category of 0
   filter(landcover =="Residential"| landcover == "Commercial and Services" | landcover == "Bays and Estuaries" | landcover == "Evergreen Forest Land") %>% 
-  st_crop(xmin = -158.31, xmax = -157.62, ymin = 21.26, ymax = 21.75)  # Crop to Oahu
+  st_crop(xmin = -158.31, xmax = -157.62, ymin = 21.20, ymax = 21.75)  # Crop to Oahu
   
 ```
 
@@ -71,7 +71,7 @@ oahu_map
 
 ```
 <p style="font-size:0.9em; font-style:italic; color: grey">
-**Figure 1. Land Use Land Cover Types on Oahu.** Location of bays and estuaries, commercial, evergreen forest, and residential land use/land cover (LULC) types based on historical LULC classification data as of 1976. Data accessed at: http://geoportal.hawaii.gov/datasets/land-use-land-cover-lulc?geometry=-165.822%2C18.755%2C-149.134%2C22.354
+**Figure 1. Land Use Land Cover Types on Oahu.** Location of bays and estuaries, commercial, evergreen forest, and residential land use/land cover (LULC) types based on historical LULC classification data as of 1976. Data accessed at: http://geoportal.hawaii.gov/datasets/land-use-land-cover-lulc
 </p>
 
 
@@ -81,7 +81,7 @@ oahu_map
 
 watersheds_oahu <- watersheds %>% 
   dplyr::select(wuname, hucarea) %>% 
-  st_crop(xmin = -158.31, xmax = -157.62, ymin = 21.26, ymax = 21.75) %>%  # Crop to Oahu
+  st_crop(xmin = -158.31, xmax = -157.62, ymin = 21.20, ymax = 21.75) %>%  # Crop to Oahu
   arrange(-hucarea) %>%  # arrange from largest to smallest area in square meters
   head(10) # Gives top 10
 
@@ -103,8 +103,11 @@ oahu_watersheds
 
 ```
 <p style="font-size:0.9em; font-style:italic; color: grey">
-**Figure 2. Oahu's Watersheds.** Top 10 largest watersheds of Oahu layered over ESRI World Topomap. Area of watersheds are measured in square meters as calculated by the GIS. Data accessed at: http://geoportal.hawaii.gov/datasets/watersheds?geometry=-165.822%2C18.755%2C-149.134%2C22.354
+**Figure 2. Oahus Watersheds.** Top 10 largest watersheds of Oahu layered over ESRI World Topomap. Area of watersheds are measured in square meters as calculated by the GIS. Data accessed at: http://geoportal.hawaii.gov/datasets/watersheds
 </p>
+
+<br>
+Oahu's top 10 largest watersheds intersect bays and estuaries, evergreen forest, commercial land use areas, and residential land use areas. This means that there are many potential points where watershed health can be affected by human activity. GIS maps like these can help scientists, policy makers, and resource managers visualize where areas interact to experiment with and analyze observed and potential changes to Oahu's watersheds.
 
 <br>
 **References**

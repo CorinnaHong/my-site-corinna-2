@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE,
 
 <br>
 
-The U.S. Department of Agriculture's FoodData Central analyzes and compiles nutrient and food component data for a wide variety of foods and beverages (U.S. Department of Agriculture, 2019). The dataset used for this project contains nutrient information for raw fruits and vegetables. Instead of analyzing each fruit and vegetable, this project will use the ordination method of principle component analysis to explore similarities and differences in legume and legume product nutrients. 
+The U.S. Department of Agriculture's FoodData Central analyzes and compiles nutrient and food component data for a wide variety of foods and beverages (U.S. Department of Agriculture, 2019). The dataset used for this project contains nutrient information for raw fruits and vegetables. Instead of analyzing each fruit and vegetable, I decided to use the ordination method of principle component analysis to explore similarities and differences in nutrients found in legume and legume products. 
 
 
 
@@ -68,18 +68,18 @@ naniar::gg_miss_var(nutrients_wrangle) # graph shows how many NA's for each vari
 
 ```
 
-```{r, run PCA, results = "hide"}
+```{r, run PCA}
 
 # PCA for nutrients in Legumes and Legume products
 
 nutrients_pca <- prcomp(nutrients_wrangle, scale = TRUE)
-nutrients_pca # Gives loading for every PC
-summary(nutrients_pca) # Proportion of variance explained by each PC
-# PC1 and PC2 together account for 47.98% of variance
+summary(nutrients_pca) # Proportion of variance explained by each PC. PC1 and PC2 together account for 47.98% of variance
 
 ```
 
 ```{r, fig.align = "center", fig.cap = "**PCA biplot of nutrients in legumes and legume products.** Line biplot visualizing PCA results for nutrients in legumes and legume products. Lengths of each line indicate variances in the respective PC direction and angles between lines indicate correlation between nutrients. Data accessed at: https://fdc.nal.usda.gov/"}
+
+# Creat biplot to visualize
 
 nutrients_biplot <- autoplot(nutrients_pca,
                       colour = NA,

@@ -107,7 +107,7 @@ salmon_month_gg
 
 ```
 
-Monthly passage counts at Bonneville Dam shows seasonality to steelhead passage. Passage counts increase in the summer months and peak in August. It also suggests an overall trend of an increase in the number of steelhead each year.
+Graphing monthly passage counts at Bonneville Dam zooms in to the pattern of seasonality identified in the daily counts plot. The data show steelhead passage counts are relatively low for most of the year until the summer months. Passage coounts being to increase in the summer months with a peak in August. Separating the data by year suggests an overall trend of an increase in the monthly total counts of steelhead passing though the dam each year.
 
 ```{r}
 
@@ -134,7 +134,7 @@ salmon_year_gg
 
 ```
 
-Annual steelhead passage counts through Bonneville Dam show an overall increasing trend in total salmon counts each year.
+Annual steelhead passage counts through Bonneville Dam support the increasing trend seen in the previous plot of monthly counts. This figure shows an overall increasing trend in yearly salmon counts. It also shows dips and spikes in passage counts which could indicate a larger cyclical trend. However, it is hard to fully discern if a cyclical trend exists because the dips and spikes get more pronounced as time passes.
 
 <br>
 **References**

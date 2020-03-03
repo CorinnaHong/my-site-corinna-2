@@ -116,8 +116,8 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="/img/apple-touch-icon.png" alt="Salmon Counts at Bonneville Dam logo" class="hidden-xs hidden-sm">
-                    <img src="/apple-touch-icon.png" alt="Salmon Counts at Bonneville Dam logo" class="visible-xs visible-sm">
+                    <img src="/img/icon.png" alt="Salmon Counts at Bonneville Dam logo" class="hidden-xs hidden-sm">
+                    <img src="/icon.png" alt="Salmon Counts at Bonneville Dam logo" class="visible-xs visible-sm">
                     <span class="sr-only">Salmon Counts at Bonneville Dam - go to homepage</span>
                 </a>
                 <div class="navbar-buttons">
@@ -287,7 +287,7 @@ salmon_month_gg</code></pre>
 Figure 2: <strong>Monthly Steelhead Salmon Passage at Bonneville Dam (1940 - 2019).</strong> Time-seris plot showing monthly changes in steelhead salmon counts at Bonneville Dam each year. Counts were totaled by month then plotted for each year. Data accessed at: <a href="http://www.cbr.washington.edu/dart/query/adult_graph_text" class="uri">http://www.cbr.washington.edu/dart/query/adult_graph_text</a>
 </p>
 </div>
-<p>Monthly passage counts at Bonneville Dam shows seasonality to steelhead passage. Passage counts increase in the summer months and peak in August. It also suggests an overall trend of an increase in the number of steelhead each year.</p>
+<p>Graphing monthly passage counts at Bonneville Dam zooms in to the pattern of seasonality identified in the daily counts plot. The data show steelhead passage counts are relatively low for most of the year until the summer months. Passage coounts being to increase in the summer months with a peak in August. Separating the data by year suggests an overall trend of an increase in the monthly total counts of steelhead passing though the dam each year.</p>
 <pre class="r"><code># Wrangle data for yearly counts
 
 salmon_yearly &lt;- salmon_parse %&gt;% 
@@ -308,7 +308,7 @@ salmon_year_gg</code></pre>
 Figure 3: <strong>Annual Steelhead Salmon Passage at Bonneville Dam (1940 - 2019).</strong> Time-seris plot showing annual changes in steelhead salmon counts at Bonneville Dam. Counts were totaled by year. Data accessed at: <a href="http://www.cbr.washington.edu/dart/query/adult_graph_text" class="uri">http://www.cbr.washington.edu/dart/query/adult_graph_text</a>
 </p>
 </div>
-<p>Annual steelhead passage counts through Bonneville Dam show an overall increasing trend in total salmon counts each year.</p>
+<p>Annual steelhead passage counts through Bonneville Dam support the increasing trend seen in the previous plot of monthly counts. This figure shows an overall increasing trend in yearly salmon counts. It also shows dips and spikes in passage counts which could indicate a larger cyclical trend. However, it is hard to fully discern if a cyclical trend exists because the dips and spikes get more pronounced as time passes.</p>
 <p><br> <strong>References</strong> <br> Columbia River DART, Columbia Basin Research, University of Washington. (2019). Adult Passage Graphics &amp; Text. Available from <a href="http://www.cbr.washington.edu/dart/query/adult_graph_text" class="uri">http://www.cbr.washington.edu/dart/query/adult_graph_text</a></p>
 <p><br> Steelhead Trout (NOAA Fisheries). (n.d.). Retrieved from <a href="https://www.fisheries.noaa.gov/species/steelhead-trout" class="uri">https://www.fisheries.noaa.gov/species/steelhead-trout</a></p>
 <p><br> U.S. Army Corps of Engineers. (n.d). <em>Bonneville Lock &amp; Dam</em>. Retrieved February 19, 2020, from <a href="https://www.nwp.usace.army.mil/bonneville/" class="uri">https://www.nwp.usace.army.mil/bonneville/</a></p>

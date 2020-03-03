@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE,
 
 <br>
 
-Agriculture in the United States is a huge economic sector. According to Statistica, there are over 2 million farms in the U.S. that employ over 900,000 people. Additionally, exports of U.S. agricultural products were worth around $133 billion USD in 2015 (Statistica Reserach Department, 2019). This project looks at patterns of U.S crop yield and fertilizer use over time for different types of crops. The final piece is a case study of fertilizer use on corn yield.
+Agriculture in the United States is a huge economic sector. According to Statistica, there are over 2 million farms in the U.S. that employ over 900,000 people. Additionally, exports of U.S. agricultural products were worth around $133 billion USD in 2015 (Statistica Reserach Department, 2019). This project looks at patterns of U.S. crop yield and discusses possible statistical models that can explain the observed trend. Fertilizer use over time is also visualized for different types of crops. The final part is a case study of fertilizer use on corn yield.
 
 
 <style>
@@ -63,7 +63,7 @@ yield_animate
 
 ```
 
-Yield in all four crops rapidly increased after the 1950s. All four of these growth trends can best be described  described by a linear, low plateau (LLP) model. The overall hockeystick shape of the trend is a plateau in yield until about 1945, where it begins to increase linearly into the 2000s. The trend in Sorghum's yield also looks like it has an upper plateau. There is a plateau from 1925 to around 1945. After that, sorghum experiences a linear increase until around 1980 where it plateaus again.
+Yield in all four crops rapidly increased after the 1950s. All four of these growth trends can best be described by a linear, low plateau (LLP) model. The overall hockeystick shape of the trend shows a plateau in yield until about 1945. Then, it begins to increase linearly into the 2000s. The trend in sorghum's yield looks like it has an upper plateau in addition to a lower plateau. There is a plateau from 1925 to around 1945. After that, sorghum experiences a linear increase until around 1980 where it plateaus again.
 
 
 ```{r, fertilizer wrange}
@@ -71,7 +71,7 @@ Yield in all four crops rapidly increased after the 1950s. All four of these gro
 # Wrangle fertilizer data
 
 fertilizer_wrangle <- fertilizer %>% 
-  filter(ppa != "NA")
+  filter(ppa != "NA") # Remove NAs
 
 ```
 
@@ -110,7 +110,7 @@ corn_fertilizer <- grain_fertilizer %>%
 
 ```
 
-```{r, fig.align = "center", fig.cap = "**Corn Case Study.** U.S. Corn Yield measured in bushels per acre from three different classes of fertilizers from 1964-2016. Three classes of fertilizers are shown: Nitrogen, phosphate, and potassium. Data points are color coded based on year with lighter blues indicating more recent years. Data accessed at: https://www.ers.usda.gov/data-products/fertilizer-use-and-price/"}
+```{r, fig.align = "center", fig.cap = "**Corn Case Study (1964-2016).** U.S. corn yield measured in bushels per acre given three different classes of fertilizers: Nitrogen, phosphate, and potassium. Data points are color coded based on year with lighter blues indicating more recent years. Data accessed at: https://www.ers.usda.gov/data-products/fertilizer-use-and-price/"}
 
 corn_graph <- ggplot(corn_fertilizer, aes(x = ppa, y = yield)) +
   geom_point(aes(color = year)) +

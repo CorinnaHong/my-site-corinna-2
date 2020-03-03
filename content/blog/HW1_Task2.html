@@ -9,7 +9,7 @@ banner: "img/banners/legumes.jpeg"
 
 
 <p><br></p>
-<p>The U.S. Department of Agriculture’s FoodData Central analyzes and compiles nutrient and food component data for a wide variety of foods and beverages (U.S. Department of Agriculture, 2019). The dataset used for this project contains nutrient information for raw fruits and vegetables. Instead of analyzing each fruit and vegetable, this project will use the ordination method of principle component analysis to explore similarities and differences in legume and legume product nutrients.</p>
+<p>The U.S. Department of Agriculture’s FoodData Central analyzes and compiles nutrient and food component data for a wide variety of foods and beverages (U.S. Department of Agriculture, 2019). The dataset used for this project contains nutrient information for raw fruits and vegetables. Instead of analyzing each fruit and vegetable, I decided to use the ordination method of principle component analysis to explore similarities and differences in nutrients found in legume and legume products.</p>
 <style>
 p.caption {
   font-size: 0.9em;
@@ -47,10 +47,27 @@ Figure 1: <strong>Missings in Data.</strong> Visualization of how many NAs are i
 <pre class="r"><code># PCA for nutrients in Legumes and Legume products
 
 nutrients_pca &lt;- prcomp(nutrients_wrangle, scale = TRUE)
-nutrients_pca # Gives loading for every PC
-summary(nutrients_pca) # Proportion of variance explained by each PC
-# PC1 and PC2 together account for 47.98% of variance</code></pre>
-<pre class="r"><code>nutrients_biplot &lt;- autoplot(nutrients_pca,
+summary(nutrients_pca) # Proportion of variance explained by each PC. PC1 and PC2 together account for 47.98% of variance</code></pre>
+<pre><code>## Importance of components:
+##                           PC1    PC2     PC3    PC4     PC5     PC6     PC7
+## Standard deviation     2.8141 1.7653 1.44554 1.2377 1.14771 1.10020 0.94678
+## Proportion of Variance 0.3443 0.1355 0.09085 0.0666 0.05727 0.05263 0.03897
+## Cumulative Proportion  0.3443 0.4798 0.57067 0.6373 0.69454 0.74717 0.78614
+##                           PC8     PC9    PC10    PC11   PC12    PC13    PC14
+## Standard deviation     0.9213 0.84661 0.76001 0.73448 0.6523 0.58288 0.54110
+## Proportion of Variance 0.0369 0.03116 0.02511 0.02345 0.0185 0.01477 0.01273
+## Cumulative Proportion  0.8230 0.85421 0.87932 0.90278 0.9213 0.93605 0.94878
+##                          PC15    PC16    PC17    PC18   PC19    PC20    PC21
+## Standard deviation     0.4937 0.44567 0.43041 0.40724 0.3490 0.34436 0.27677
+## Proportion of Variance 0.0106 0.00864 0.00805 0.00721 0.0053 0.00516 0.00333
+## Cumulative Proportion  0.9594 0.96801 0.97607 0.98328 0.9886 0.99373 0.99706
+##                           PC22    PC23
+## Standard deviation     0.25699 0.03925
+## Proportion of Variance 0.00287 0.00007
+## Cumulative Proportion  0.99993 1.00000</code></pre>
+<pre class="r"><code># Creat biplot to visualize
+
+nutrients_biplot &lt;- autoplot(nutrients_pca,
                       colour = NA,
                       loadings.label = TRUE,
                       loadings.label.size = 3,
